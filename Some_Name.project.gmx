@@ -12,6 +12,7 @@
   <paths name="paths"/>
   <rooms name="rooms">
     <room>rooms\room0</room>
+    <room>rooms\menu</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
