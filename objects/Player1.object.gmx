@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>/// Movement
 var controller = 0; //0 refers to hard coded controller in index 0 (exclusive to xbox controllers in array positions 0 through 3)
-x += gamepad_axis_value(controller, gp_axislh);
+var controllerOpposing = 1;
+x += 2 * gamepad_axis_value(controller, gp_axislh);
 </string>
           </argument>
         </arguments>
@@ -46,7 +47,9 @@ x += gamepad_axis_value(controller, gp_axislh);
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>0,0</point>
-    <point>16,16</point>
+    <point>-30,-60</point>
+    <point>30,-60</point>
+    <point>30,60</point>
+    <point>-30,60</point>
   </PhysicsShapePoints>
 </object>

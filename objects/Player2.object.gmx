@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>/// Movement
 var controller = 1; //1 refers to hard coded controller in index 0 (exclusive to xbox controllers in array positions 0 through 3)
-x += gamepad_axis_value(controller, gp_axislh);
+var controllerOposing = 0;
+x += 2 * gamepad_axis_value(controller, gp_axislh);
 </string>
           </argument>
         </arguments>
