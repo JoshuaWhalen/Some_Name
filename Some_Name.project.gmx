@@ -8,10 +8,13 @@
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
     <sprite>sprites\spr_idle</sprite>
+    <sprite>sprites\spr_1</sprite>
+    <sprite>sprites\spr_2</sprite>
     <sprite>sprites\spr_mid_kick</sprite>
     <sprite>sprites\spr_mid_punch</sprite>
     <sprite>sprites\spr_uppercut</sprite>
     <sprite>sprites\sprite5</sprite>
+    <sprite>sprites\sprite6</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
