@@ -7,25 +7,21 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
-<<<<<<< HEAD
-    <sprite>sprites\sprite1</sprite>
-=======
     <sprite>sprites\spr_idle</sprite>
     <sprite>sprites\spr_mid_kick</sprite>
     <sprite>sprites\spr_mid_punch</sprite>
     <sprite>sprites\spr_uppercut</sprite>
->>>>>>> b14ed5a4445b90198de89bfc7191f1a27cee34e6
+    <sprite>sprites\spr_walking</sprite>
+    <sprite>sprites\spr_low_kick</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
-    <background>background\bg_bloody_wall</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\Player1</object>
     <object>objects\Player2</object>
     <object>objects\obj_player1</object>
-    <object>objects\obj_sidewall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_arena</room>
