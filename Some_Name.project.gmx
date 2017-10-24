@@ -7,6 +7,10 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
+    <sprite>sprites\spr_idle</sprite>
+    <sprite>sprites\spr_mid_kick</sprite>
+    <sprite>sprites\spr_mid_punch</sprite>
+    <sprite>sprites\spr_uppercut</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
