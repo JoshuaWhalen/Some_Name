@@ -11,6 +11,7 @@
     <sprite>sprites\spr_mid_kick</sprite>
     <sprite>sprites\spr_mid_punch</sprite>
     <sprite>sprites\spr_uppercut</sprite>
+    <sprite>sprites\sprite5</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
@@ -20,6 +21,7 @@
     <object>objects\Player1</object>
     <object>objects\Player2</object>
     <object>objects\obj_player1</object>
+    <object>objects\Floor</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_arena</room>
