@@ -15,8 +15,10 @@
   <objects name="objects">
     <object>objects\Player1</object>
     <object>objects\Player2</object>
+    <object>objects\obj_player1</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_arena</room>
     <room>rooms\room0</room>
     <room>rooms\menu</room>
   </rooms>
