@@ -7,15 +7,18 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
+    <sprite>sprites\sprite1</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
+    <background>background\bg_bloody_wall</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\Player1</object>
     <object>objects\Player2</object>
     <object>objects\obj_player1</object>
+    <object>objects\obj_sidewall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_arena</room>
