@@ -27,7 +27,7 @@
     <object>objects\Floor</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_arena</room>
+    <room>rooms\Room</room>
     <room>rooms\room0</room>
     <room>rooms\menu</room>
   </rooms>
