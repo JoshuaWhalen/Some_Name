@@ -15,6 +15,12 @@
     <sprite>sprites\spr_midkick_hit</sprite>
     <sprite>sprites\spr_lowkick</sprite>
     <sprite>sprites\spr_lowkick_hit</sprite>
+    <sprites name="healthbar">
+      <sprite>sprites\spr_healthbar_full</sprite>
+      <sprite>sprites\spr_healthbar_0</sprite>
+      <sprite>sprites\spr_healthbar_33</sprite>
+      <sprite>sprites\spr_healthbar_66</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
@@ -24,13 +30,15 @@
     <object>objects\Player1</object>
     <object>objects\Player2</object>
     <object>objects\Floor</object>
-    <object>objects\obj_player1</object>
+    <object>objects\obj_player</object>
     <object>objects\obj_midpunch</object>
     <object>objects\obj_highpunch</object>
     <object>objects\obj_midkick</object>
     <object>objects\obj_lowkick</object>
+    <object>objects\obj_healthbar</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_arena</room>
     <room>rooms\Room</room>
     <room>rooms\room0</room>
     <room>rooms\menu</room>
