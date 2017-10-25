@@ -29,6 +29,19 @@
 var controller = 0; //0 refers to hard coded controller in index 0 (exclusive to xbox controllers in array positions 0 through 3)
 var controllerOpposing = 1;
 x += 2 * gamepad_axis_value(controller, gp_axislh);
+
+if keyboard_check(ord('A')){
+
+    hspeed = -5
+
+}
+
+if keyboard_check(ord('D')){
+
+    hspeed = 5
+
+}
+
 </string>
           </argument>
         </arguments>

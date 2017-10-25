@@ -23,8 +23,8 @@
   <objects name="objects">
     <object>objects\Player1</object>
     <object>objects\Player2</object>
-    <object>objects\obj_player1</object>
     <object>objects\Floor</object>
+    <object>objects\obj_player1</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Room</room>
