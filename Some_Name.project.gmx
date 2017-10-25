@@ -13,13 +13,8 @@
     <sprite>sprites\spr_mid_kick</sprite>
     <sprite>sprites\spr_mid_punch</sprite>
     <sprite>sprites\spr_uppercut</sprite>
-<<<<<<< HEAD
     <sprite>sprites\sprite5</sprite>
     <sprite>sprites\sprite6</sprite>
-=======
-    <sprite>sprites\spr_walking</sprite>
-    <sprite>sprites\spr_low_kick</sprite>
->>>>>>> dc6ed0a6eeed8b09c9fcaae9f9f86a7238c14840
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
