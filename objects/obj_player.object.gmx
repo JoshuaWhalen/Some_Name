@@ -25,10 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gamepad_set_axis_deadzone(-0.75, 0.75);
-friction = 1;
+            <string>gamepad_set_axis_deadzone(0, 0.25);
+friction = 3;
 max_speed = 10;
-
 
 healthbar = instance_create(x, y - (sprite_height/2) - 10, obj_healthbar);
 healthbar.owner = id;
@@ -142,39 +141,160 @@ if((h_move != 0) || (v_move != 0)){
         //vspeed += max_speed * v_move;
     }
 }
-
-//control walking animation
-if(hspeed != 0 &amp;&amp; grounded){
+if(hspeed &gt; 0){
     sprite_index = spr_move;
     alarm[0] = 10;
 }
 
 //jumping
 if(gamepad_button_check_pressed(control, gp_face1) &amp;&amp; grounded){
-    vspeed -= 60;
+    vspeed -= 30;
 }
-
 
 //attacks
 if(gamepad_button_check_pressed(player_num, gp_shoulderrb)){
     sprite_index = spr_midpunch;
+    image_index = 0; //set to beginning of animation
+    with(instance_create(x,y,obj_midpunch)){
+        image_xscale = other.image_xscale;
+    }
     alarm[0] = 10;
     show_debug_message("Mid Punch from " + string(player_num + 1));
 }
 if(gamepad_button_check_pressed(player_num, gp_shoulderr)){
     sprite_index = spr_highpunch;
+    image_index = 0; //set to beginning of animation
+    with(instance_create(x,y,obj_highpunch)){
+        image_xscale = other.image_xscale;
+    }
     alarm[0] = 10;
     show_debug_message("High punch from " + string(player_num + 1));
 }
 if(gamepad_button_check_pressed(player_num, gp_shoulderlb)){
     sprite_index = spr_lowkick;
+    image_index = 0; //set to beginning of animation
+    with(instance_create(x,y,obj_lowkick)){
+        image_xscale = other.image_xscale;
+    }
     alarm[0] = 10;
     show_debug_message("Low kick from " + string(player_num + 1));
 }
 if(gamepad_button_check_pressed(player_num, gp_shoulderl)){
     sprite_index = spr_midkick;
+    image_index = 0; //set to beginning of animation
+    with(instance_create(x,y,obj_midkick)){
+        image_xscale = other.image_xscale;
+    }
     alarm[0] = 10;
     show_debug_message("Mid Kick from " + string(player_num + 1));
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_lowkick">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(other){
+    other.hit += 1; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
+    image_blend = c_white; //flash the player white to show the player is hit
+    alarm[1] = 2; 
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_midkick">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(other){
+    other.hit += 1; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
+    image_blend = c_white; //flash the player white to show the player is hit
+    alarm[1] = 2; 
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_highpunch">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(other){
+    other.hit += 1; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
+    image_blend = c_white; //flash the player white to show the player is hit
+    alarm[1] = 2; 
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_midpunch">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(other){
+    other.hit += 1; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
+    image_blend = c_white; //flash the player white to show the player is hit
+    alarm[1] = 2; 
 }
 </string>
           </argument>
