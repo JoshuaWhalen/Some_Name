@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>gamepad_set_axis_deadzone(0, 0.25);
+gamepad_set_axis_deadzone(1, 0.25);
 friction = 3;
 max_speed = 10;
 
@@ -103,9 +104,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(gamepad_button_check_pressed(0, gp_select) || gamepad_button_check_pressed(1, gp_select)){
-    room_restart();
-}
+            <string>
 
 //gravity
 if(!place_meeting(x, y + (sprite_height/2) + 1, obj_floor)){
@@ -141,7 +140,7 @@ if((h_move != 0) || (v_move != 0)){
         //vspeed += max_speed * v_move;
     }
 }
-if(hspeed &gt; 0){
+if(hspeed != 0){
     sprite_index = spr_move;
     alarm[0] = 10;
 }

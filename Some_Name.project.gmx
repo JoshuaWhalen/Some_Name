@@ -32,8 +32,6 @@
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\Player1</object>
-    <object>objects\Player2</object>
     <object>objects\obj_floor</object>
     <object>objects\obj_player</object>
     <object>objects\obj_midpunch</object>
@@ -44,8 +42,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_arena</room>
-    <room>rooms\Room</room>
-    <room>rooms\room0</room>
     <room>rooms\menu</room>
   </rooms>
   <help>
