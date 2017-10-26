@@ -211,7 +211,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl)){
           <argument>
             <kind>1</kind>
             <string>with(other){
-    other.hit += 1; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
+    other.hit += 1/3; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
     image_blend = c_white; //flash the player white to show the player is hit
     alarm[1] = 2; 
 }
@@ -238,7 +238,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl)){
           <argument>
             <kind>1</kind>
             <string>with(other){
-    other.hit += 1; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
+    other.hit += 1/3; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
     image_blend = c_white; //flash the player white to show the player is hit
     alarm[1] = 2; 
 }
@@ -265,7 +265,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl)){
           <argument>
             <kind>1</kind>
             <string>with(other){
-    other.hit += 1; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
+    other.hit += 1/3; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
     image_blend = c_white; //flash the player white to show the player is hit
     alarm[1] = 2; 
 }
@@ -292,7 +292,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl)){
           <argument>
             <kind>1</kind>
             <string>with(other){
-    other.hit += 1; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
+    other.hit += 1/3; //issue: 1 actual hit is calculated multiple times as a collision. Must be fixed at some point.
     image_blend = c_white; //flash the player white to show the player is hit
     alarm[1] = 2; 
 }
