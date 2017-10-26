@@ -103,15 +103,38 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var control = -1;
+            <string>if(gamepad_button_check_pressed(0, gp_select) || gamepad_button_check_pressed(1, gp_select)){
+    room_restart();
+}
+
+//gravity
+if(!place_meeting(x, y + (sprite_height/2) + 1, obj_floor)){
+
+    gravity = 2;
+    grounded = false;
+} 
+else{
+    gravity = 0;
+    grounded = true;
+}
+
+//Supposed to prevent player from going outside of the screen
+x = clamp(x, sprite_width/2, room_width - (sprite_width/2));
+y = clamp(y, sprite_height/2, room_height - (sprite_height/2));
+
+
+//switching movement control to other player
+var control = -1;
 if(player_num == 0)
     control = 1;
 else
     control = 0;
 
+//collecting analog stick input
 var h_move = gamepad_axis_value(control, gp_axislh); //horizontal movement
 var v_move = gamepad_axis_value(control, gp_axislv); //vertical movement
 
+//setting speed
 if((h_move != 0) || (v_move != 0)){
     if(speed &lt; (max_speed)){
         hspeed += max_speed * h_move;
@@ -119,6 +142,12 @@ if((h_move != 0) || (v_move != 0)){
     }
 }
 
+//jumping
+if(gamepad_button_check_pressed(control, gp_face1) &amp;&amp; grounded){
+    vspeed -= 60;
+}
+
+//attacks
 if(gamepad_button_check_pressed(player_num, gp_shoulderrb)){
     sprite_index = spr_midpunch;
     alarm[0] = 10;

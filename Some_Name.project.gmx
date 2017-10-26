@@ -21,15 +21,17 @@
       <sprite>sprites\spr_healthbar_33</sprite>
       <sprite>sprites\spr_healthbar_66</sprite>
     </sprites>
+    <sprite>sprites\spr_floor</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
+    <background>background\bg_rockwall</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\Player1</object>
     <object>objects\Player2</object>
-    <object>objects\Floor</object>
+    <object>objects\obj_floor</object>
     <object>objects\obj_player</object>
     <object>objects\obj_midpunch</object>
     <object>objects\obj_highpunch</object>
