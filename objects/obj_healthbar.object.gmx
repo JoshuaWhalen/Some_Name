@@ -25,13 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if (instance_exists(owner)){
+            <string>if (instance_exists(owner)){
     move_towards_point(owner.x, y, speed);
-}*/
+
 
 x = owner.x; //follow the player
-y = owner.y - owner.sprite_height/2 + 10;
-
+y = owner.y - owner.sprite_height/2;
+}
 if(owner.hit &lt; 1){
     sprite_index = spr_healthbar_full;
 }
