@@ -6,22 +6,28 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_idle</sprite>
-    <sprite>sprites\spr_midpunch</sprite>
-    <sprite>sprites\spr_midpunch_hit</sprite>
-    <sprite>sprites\spr_highpunch</sprite>
-    <sprite>sprites\spr_highpunch_hit</sprite>
-    <sprite>sprites\spr_midkick</sprite>
-    <sprite>sprites\spr_midkick_hit</sprite>
-    <sprite>sprites\spr_lowkick</sprite>
-    <sprite>sprites\spr_lowkick_hit</sprite>
     <sprites name="healthbar">
       <sprite>sprites\spr_healthbar_full</sprite>
       <sprite>sprites\spr_healthbar_0</sprite>
       <sprite>sprites\spr_healthbar_33</sprite>
       <sprite>sprites\spr_healthbar_66</sprite>
     </sprites>
+<<<<<<< HEAD
     <sprite>sprites\spr_floor</sprite>
+=======
+    <sprites name="player">
+      <sprite>sprites\spr_idle</sprite>
+      <sprite>sprites\spr_move</sprite>
+      <sprite>sprites\spr_midpunch</sprite>
+      <sprite>sprites\spr_midpunch_hit</sprite>
+      <sprite>sprites\spr_highpunch</sprite>
+      <sprite>sprites\spr_highpunch_hit</sprite>
+      <sprite>sprites\spr_lowkick</sprite>
+      <sprite>sprites\spr_lowkick_hit</sprite>
+      <sprite>sprites\spr_midkick</sprite>
+      <sprite>sprites\spr_midkick_hit</sprite>
+    </sprites>
+>>>>>>> d4e09ea73bfe758c801ae021696879d3bcfaf883
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
