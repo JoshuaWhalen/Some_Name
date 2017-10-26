@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gamepad_set_axis_deadzone(0, 0.25);
+            <string>gamepad_set_axis_deadzone(-0.75, 0.75);
 friction = 1;
 max_speed = 10;
+
 
 healthbar = instance_create(x, y - (sprite_height/2) - 10, obj_healthbar);
 healthbar.owner = id;
@@ -141,7 +142,9 @@ if((h_move != 0) || (v_move != 0)){
         //vspeed += max_speed * v_move;
     }
 }
-if(h_move != 0){
+
+//control walking animation
+if(hspeed != 0 &amp;&amp; grounded){
     sprite_index = spr_move;
     alarm[0] = 10;
 }
@@ -150,6 +153,7 @@ if(h_move != 0){
 if(gamepad_button_check_pressed(control, gp_face1) &amp;&amp; grounded){
     vspeed -= 60;
 }
+
 
 //attacks
 if(gamepad_button_check_pressed(player_num, gp_shoulderrb)){
