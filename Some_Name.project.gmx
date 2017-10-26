@@ -6,20 +6,23 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_idle</sprite>
-    <sprite>sprites\spr_midpunch</sprite>
-    <sprite>sprites\spr_midpunch_hit</sprite>
-    <sprite>sprites\spr_highpunch</sprite>
-    <sprite>sprites\spr_highpunch_hit</sprite>
-    <sprite>sprites\spr_midkick</sprite>
-    <sprite>sprites\spr_midkick_hit</sprite>
-    <sprite>sprites\spr_lowkick</sprite>
-    <sprite>sprites\spr_lowkick_hit</sprite>
     <sprites name="healthbar">
       <sprite>sprites\spr_healthbar_full</sprite>
       <sprite>sprites\spr_healthbar_0</sprite>
       <sprite>sprites\spr_healthbar_33</sprite>
       <sprite>sprites\spr_healthbar_66</sprite>
+    </sprites>
+    <sprites name="player">
+      <sprite>sprites\spr_idle</sprite>
+      <sprite>sprites\spr_move</sprite>
+      <sprite>sprites\spr_midpunch</sprite>
+      <sprite>sprites\spr_midpunch_hit</sprite>
+      <sprite>sprites\spr_highpunch</sprite>
+      <sprite>sprites\spr_highpunch_hit</sprite>
+      <sprite>sprites\spr_lowkick</sprite>
+      <sprite>sprites\spr_lowkick_hit</sprite>
+      <sprite>sprites\spr_midkick</sprite>
+      <sprite>sprites\spr_midkick_hit</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
