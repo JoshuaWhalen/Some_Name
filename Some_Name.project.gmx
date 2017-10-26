@@ -25,6 +25,9 @@
       <sprite>sprites\spr_midkick</sprite>
       <sprite>sprites\spr_midkick_hit</sprite>
     </sprites>
+    <sprites name="NewHB">
+      <sprite>sprites\spr_healthbar_new</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>

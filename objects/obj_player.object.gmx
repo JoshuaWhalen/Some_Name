@@ -32,7 +32,9 @@ max_speed = 10;
 
 healthbar = instance_create(x, y - (sprite_height/2) - 10, obj_healthbar);
 healthbar.owner = id;
-hit = 0;
+var max_hit = 3;
+hit = max_hit;
+var attacking = false;
 </string>
           </argument>
         </arguments>
@@ -82,6 +84,7 @@ else
           <argument>
             <kind>1</kind>
             <string>sprite_index = spr_idle;
+attacking = false;
 </string>
           </argument>
         </arguments>
@@ -104,9 +107,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-//gravity
+            <string>//gravity
 if(!place_meeting(x, y + (sprite_height/2) + 1, obj_floor)){
 
     gravity = 2;
@@ -134,13 +135,13 @@ var h_move = gamepad_axis_value(control, gp_axislh); //horizontal movement
 var v_move = gamepad_axis_value(control, gp_axislv); //vertical movement
 
 //setting speed
-if((h_move != 0) || (v_move != 0)){
+if((h_move != 0) || (v_move != 0) &amp;&amp; (attacking != true)){
     if(speed &lt; (max_speed)){
         hspeed += max_speed * h_move;
         //vspeed += max_speed * v_move;
     }
 }
-if(hspeed != 0){
+if(hspeed != 0 &amp;&amp; (attacking != true)){
     sprite_index = spr_move;
     alarm[0] = 10;
 }
@@ -152,6 +153,7 @@ if(gamepad_button_check_pressed(control, gp_face1) &amp;&amp; grounded){
 
 //attacks
 if(gamepad_button_check_pressed(player_num, gp_shoulderrb)){
+    attacking = true;
     sprite_index = spr_midpunch;
     image_index = 0; //set to beginning of animation
     with(instance_create(x,y,obj_midpunch)){
@@ -161,6 +163,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderrb)){
     show_debug_message("Mid Punch from " + string(player_num + 1));
 }
 if(gamepad_button_check_pressed(player_num, gp_shoulderr)){
+    attacking = true;
     sprite_index = spr_highpunch;
     image_index = 0; //set to beginning of animation
     with(instance_create(x,y,obj_highpunch)){
@@ -170,6 +173,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderr)){
     show_debug_message("High punch from " + string(player_num + 1));
 }
 if(gamepad_button_check_pressed(player_num, gp_shoulderlb)){
+    attacking = true;
     sprite_index = spr_lowkick;
     image_index = 0; //set to beginning of animation
     with(instance_create(x,y,obj_lowkick)){
@@ -179,6 +183,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderlb)){
     show_debug_message("Low kick from " + string(player_num + 1));
 }
 if(gamepad_button_check_pressed(player_num, gp_shoulderl)){
+    attacking = true;
     sprite_index = spr_midkick;
     image_index = 0; //set to beginning of animation
     with(instance_create(x,y,obj_midkick)){
@@ -268,7 +273,6 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl)){
     image_blend = c_white; //flash the player white to show the player is hit
     alarm[1] = 2; 
 }
-instance_destroy();
 </string>
           </argument>
         </arguments>
