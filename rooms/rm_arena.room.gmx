@@ -51,9 +51,9 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_player" x="576" y="1248" name="inst_2F50EAB1" locked="0" code="player_num = 0;&#xA;image_blend = c_red;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="1504" y="1248" name="inst_92B927F3" locked="0" code="player_num = 1;&#xA;image_blend = c_blue;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_floor" x="0" y="1385" name="inst_B5CAF458" locked="0" code="" scaleX="2048" scaleY="150" colour="3372220415" rotation="0"/>
+    <instance objName="obj_player" x="1504" y="1248" name="inst_92B927F3" locked="0" code="player_num = 1;&#xA;image_blend = c_blue;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="576" y="1248" name="inst_2F50EAB1" locked="0" code="player_num = 0;&#xA;image_blend = c_red;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

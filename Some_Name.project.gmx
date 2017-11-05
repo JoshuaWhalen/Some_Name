@@ -34,6 +34,7 @@
     <background>background\bg_rockwall</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts"/>
   <objects name="objects">
     <object>objects\obj_floor</object>
     <object>objects\obj_player</object>

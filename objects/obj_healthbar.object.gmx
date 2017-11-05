@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+me = id;
 </string>
           </argument>
         </arguments>
@@ -48,15 +49,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(owner)){
+            <string>me = id;
+if (instance_exists(owner)){
     move_towards_point(owner.x, y, speed);
-
 
     x = owner.x; //follow the player
     y = owner.y - owner.sprite_height/2;
     
     //set new healthbar health;
-    image_index = (hit / max_hit) * 100;
+    image_index = (owner.hit / global.max_hit) * 100;
 }
 //disabled
 /*if(owner.hit &lt; 1){
@@ -68,7 +69,7 @@ else if(owner.hit &lt; 2){
 else if(owner.hit &lt; 3){
     sprite_index = spr_healthbar_33;
 }*/
-if(hit &lt;= 0){
+if(owner.hit &lt;= 0){
     with(owner){
         instance_destroy();
     }
