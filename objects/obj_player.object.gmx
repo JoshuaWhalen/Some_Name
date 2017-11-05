@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///Variables
-gamepad_set_axis_deadzone(0, 0.10);
-gamepad_set_axis_deadzone(1, 0.10);
+gamepad_set_axis_deadzone(0, 0.18);
+gamepad_set_axis_deadzone(1, 0.18);
 friction = 3;
 damage = 5;
 max_speed = 15;
