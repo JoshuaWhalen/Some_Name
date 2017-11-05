@@ -6,12 +6,6 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprites name="healthbar">
-      <sprite>sprites\spr_healthbar_full</sprite>
-      <sprite>sprites\spr_healthbar_0</sprite>
-      <sprite>sprites\spr_healthbar_33</sprite>
-      <sprite>sprites\spr_healthbar_66</sprite>
-    </sprites>
     <sprite>sprites\spr_floor</sprite>
     <sprites name="player">
       <sprite>sprites\spr_idle</sprite>
@@ -34,7 +28,6 @@
     <background>background\bg_rockwall</background>
   </backgrounds>
   <paths name="paths"/>
-  <scripts name="scripts"/>
   <objects name="objects">
     <object>objects\obj_floor</object>
     <object>objects\obj_player</object>

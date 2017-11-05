@@ -239,9 +239,9 @@ attacking = false;
             <kind>1</kind>
             <string>///Movement
 //gravity
-if(!place_meeting(x, y + (sprite_height/2) + 1, obj_floor)){
+if(!place_meeting(x, y, obj_floor)){
 
-    gravity = 2;
+    gravity = 3.5;
     grounded = false;
 } 
 else{
@@ -267,7 +267,7 @@ var v_move = gamepad_axis_value(control, gp_axislv); //vertical movement
 
 //setting speed
 if((h_move != 0) || (v_move != 0) &amp;&amp; !attacking){
-    if(speed &lt; (max_speed)){
+    if(abs(hspeed) &lt; (max_speed)){
         hspeed += max_speed * h_move;
         //vspeed += max_speed * v_move;
     }
@@ -279,7 +279,7 @@ if(hspeed != 0 &amp;&amp; !attacking){
 
 //jumping
 if(gamepad_button_check_pressed(control, gp_face1) &amp;&amp; grounded){
-    vspeed -= 30;
+    vspeed -= 70;
 }
 </string>
           </argument>
@@ -344,8 +344,6 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking)
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="obj_player">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -362,7 +360,15 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;other.x then image_xscale=1 else image_xscale=-1;
+            <string>///Facing
+notme = true;
+//if x&lt;other.x then image_xscale=1 else image_xscale=-1;
+if(x &lt; instance_exists(obj_player).x){
+    image_xscale = 1;
+}
+else{
+    image_xscale = -1;
+}
 </string>
           </argument>
         </arguments>
