@@ -18,6 +18,7 @@
       <sprite>sprites\spr_lowkick_hit</sprite>
       <sprite>sprites\spr_midkick</sprite>
       <sprite>sprites\spr_midkick_hit</sprite>
+      <sprite>sprites\spr_reverse</sprite>
     </sprites>
     <sprites name="NewHB">
       <sprite>sprites\spr_healthbar_new</sprite>
