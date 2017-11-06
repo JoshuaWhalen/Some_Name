@@ -20,7 +20,7 @@
       <sprite>sprites\spr_midkick_hit</sprite>
       <sprite>sprites\spr_reverse</sprite>
     </sprites>
-    <sprites name="NewHB">
+    <sprites name="Healthbar">
       <sprite>sprites\spr_healthbar_new</sprite>
     </sprites>
   </sprites>
