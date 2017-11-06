@@ -311,9 +311,11 @@ if(hspeed != 0 &amp;&amp; !attacking){
 
 //jumping
 if(gamepad_button_check_pressed(control, gp_face1) || keyboard_check(vk_space) &amp;&amp; grounded){
-    vspeed -= 70;
+    vspeed -= 90;
     grounded = false;
-    gravity = 3.5;
+}
+if(!grounded){
+    vspeed += 5;
 }
 </string>
           </argument>
@@ -425,7 +427,7 @@ else{
           <argument>
             <kind>1</kind>
             <string>grounded = true;
-gravity = 0;
+vspeed = 0;
 </string>
           </argument>
         </arguments>
