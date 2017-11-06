@@ -25,18 +25,50 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Variables
+            <string>///Game Objects
+//controller deadzones
 gamepad_set_axis_deadzone(0, 0.25);
 gamepad_set_axis_deadzone(1, 0.25);
+
+//control flags + other
 friction = 3;
-damage = 5;
-max_speed = 15;
-max_hit = 100;
-hit = max_hit;
 attacking = false;
 grounded = true;
+
+//additional objects
 healthbar = instance_create(x, y - (sprite_height/2) - 10, obj_healthbar);
 healthbar.owner = id;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Player variables
+//These are just default values for current game state compatibility
+damage = 5;         //Amount of damage player deals
+max_speed = 15;     //Maximum horizontal speed of player
+max_hit = 100;      //Maximum hit points
+hit = max_hit;      //Do not touch. Modify hit point values through enemy damage or max_hit
+recovery = 10;      //Time between attacks /\ Not implemented will be called on attack alarms
+attack_speed = 5;   /*Speed at which the player attacks /\ Must be used with recovery
+                      If attack speed loops over on animation, set attack_speed to max
+                      attack animation frames and increase recovery
+                    */
 </string>
           </argument>
         </arguments>
@@ -118,12 +150,12 @@ with(instance_create(x,y,obj_lowkick)){ // hitbox creation
             <kind>1</kind>
             <string>///Mid Kick Object
 with(instance_create(x,y,obj_midkick)){ // hitbox creation
-    image_xscale = other.image_xscale;
-    var dmg = other.damage;
+    image_xscale = other.image_xscale;  // change hitbox to face player
+    var dmg = other.damage;             // pass damage through
     with(instance_place(x,y,obj_player)){ // with another player
-        hit -= dmg;
-        image_blend = c_white; //hit flash
-        alarm[1] = 2;
+        hit -= dmg;                     // damage from attacking fighter hitting recieving fighter
+        image_blend = c_white;  // hit flash
+        alarm[1] = 2;           // reset player colour
     }
 }
 </string>
@@ -240,7 +272,6 @@ else
           <argument>
             <kind>1</kind>
             <string>///Recover from attack
-sprite_index = spr_idle;
 attacking = false;
 </string>
           </argument>
@@ -342,10 +373,11 @@ if(!grounded){
 // Mid Punch
 if(gamepad_button_check_pressed(player_num, gp_shoulderrb) &amp;&amp; !attacking){
     attacking = true;
-    image_index = 0; //set to beginning of animation
     sprite_index = spr_midpunch;
-    alarm[2] = 5;
-    alarm[0] = 10;
+    image_index = 0;// Set to beginning of animation
+    alarm[2] = 5;   // Mid punch object creation
+    alarm[0] = 10;  // Reset attack flag
+    alarm[6] = 10;  // Reset to idle animation
     show_debug_message("Mid Punch from " + string(player_num + 1));
 }
 
@@ -353,27 +385,30 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderrb) &amp;&amp; !attacking
 if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !attacking){
     attacking = true;
     sprite_index = spr_highpunch;
-    image_index = 0; //set to beginning of animation
-    alarm[3] = 5;
-    alarm[0] = 20;
+    image_index = 0;// Set to beginning of animation
+    alarm[3] = 5;   // High punch object creation
+    alarm[0] = 20;  // Reset attack flag
+    alarm[6] = 10;  // Reset to idle animation
     show_debug_message("High punch from " + string(player_num + 1));
 }
 // Low Kick
 if(gamepad_button_check_pressed(player_num, gp_shoulderlb) &amp;&amp; !attacking){
     attacking = true;
     sprite_index = spr_lowkick;
-    image_index = 0; //set to beginning of animation
-    alarm[5] = 5;
-    alarm[0] = 15;
+    image_index = 0;// Set to beginning of animation
+    alarm[5] = 5;   // Low kick object creation
+    alarm[0] = 15;  // Reset attack flag
+    alarm[6] = 10;  // Reset to idle animation
     show_debug_message("Low kick from " + string(player_num + 1));
 }
 // Mid Kick
 if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking){
     attacking = true;
     sprite_index = spr_midkick;
-    image_index = 0; //set to beginning of animation
-    alarm[4] = 5;
-    alarm[0] = 10;
+    image_index = 0;// Set to beginning of animation
+    alarm[4] = 5;   // Mid kick object creation
+    alarm[0] = 10;  // Reset attack flag
+    alarm[6] = 10;  // Reset to idle animation
     show_debug_message("Mid Kick from " + string(player_num + 1));
 }
 </string>
@@ -426,7 +461,8 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>grounded = true;
+            <string>///Stop player from falling through floor
+grounded = true;
 vspeed = 0;
 </string>
           </argument>

@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_floor" x="1152" y="960" name="inst_B5CAF458" locked="0" code="" scaleX="570" scaleY="10" colour="3363864704" rotation="0"/>
-    <instance objName="obj_player" x="1984" y="800" name="inst_92B927F3" locked="0" code="player_num = 1;&#xA;image_blend = c_blue;&#xA;" scaleX="-0.969924807548523" scaleY="0.970588207244873" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="1984" y="800" name="inst_92B927F3" locked="0" code="player_num = 1;&#xA;image_blend = c_blue;" scaleX="-0.969924807548523" scaleY="0.970588207244873" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="928" y="800" name="inst_2F50EAB1" locked="0" code="player_num = 0;&#xA;image_blend = c_red;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
