@@ -29,6 +29,8 @@
 //controller deadzones
 gamepad_set_axis_deadzone(0, 0.25);
 gamepad_set_axis_deadzone(1, 0.25);
+rsv = 0;
+rsh = 0;
 
 //control flags + other
 friction = 3;
@@ -38,6 +40,10 @@ grounded = true;
 //additional objects
 healthbar = instance_create(x, y - (sprite_height/2) - 10, obj_healthbar);
 healthbar.owner = id;
+grap = instance_create(x, y, obj_tracer);
+grap.owner = id;
+
+
 </string>
           </argument>
         </arguments>
@@ -64,11 +70,21 @@ damage = 5;         //Amount of damage player deals
 max_speed = 15;     //Maximum horizontal speed of player
 max_hit = 100;      //Maximum hit points
 hit = max_hit;      //Do not touch. Modify hit point values through enemy damage or max_hit
-recovery = 10;      //Time between attacks /\ Not implemented will be called on attack alarms
-attack_speed = 5;   /*Speed at which the player attacks /\ Must be used with recovery
-                      If attack speed loops over on animation, set attack_speed to max
-                      attack animation frames and increase recovery
+recovery = 20;      /*Amount of animation played
+                      Cannot exceed maximum sprite frames
+                       - Already implemented, no need to manually check for exceeding value
                     */
+attack_speed = 10;  //Frame amount to reset attack flag
+//Additional damage modifiers. Already applied on attack
+/*
+  Allows for a more durable damage system allowing for more direct damage modification
+  Ex. dump all damage into uppercut for a one hit, but no jab damage
+  set hPunchMod to +90 and and mPunchMod to -damage to nullify the +damage from base model
+*/
+mPunchMod = 0;      //Additional jab damage
+hPunchMod = 0;      //Additional uppercut damage
+mKickMod = 0;       //Additional mid lick damage
+lKickMod = 0;       //Additional low kick damage
 </string>
           </argument>
         </arguments>
@@ -119,7 +135,7 @@ image_speed = 1;
             <string>///Low Kick Object
 with(instance_create(x,y,obj_lowkick)){ // hitbox creation
     image_xscale = other.image_xscale;
-    var dmg = other.damage;
+    var dmg = other.damage + other.lKickMod;
     with(instance_place(x,y,obj_player)){ // with another player
         hit -= dmg;
         image_blend = c_white; //hit flash
@@ -151,7 +167,7 @@ with(instance_create(x,y,obj_lowkick)){ // hitbox creation
             <string>///Mid Kick Object
 with(instance_create(x,y,obj_midkick)){ // hitbox creation
     image_xscale = other.image_xscale;  // change hitbox to face player
-    var dmg = other.damage;             // pass damage through
+    var dmg = other.damage + other.mKickMod;             // pass damage through
     with(instance_place(x,y,obj_player)){ // with another player
         hit -= dmg;                     // damage from attacking fighter hitting recieving fighter
         image_blend = c_white;  // hit flash
@@ -183,7 +199,7 @@ with(instance_create(x,y,obj_midkick)){ // hitbox creation
             <string>///High Punch Object
 with(instance_create(x,y,obj_highpunch)){ // hitbox creation
     image_xscale = other.image_xscale;
-    var dmg = other.damage;
+    var dmg = other.damage + other.hPunchMod;
     with(instance_place(x,y,obj_player)){ // with another player
         hit -= dmg * 2;
         image_blend = c_white; //hit flash
@@ -215,7 +231,7 @@ with(instance_create(x,y,obj_highpunch)){ // hitbox creation
             <string>///Mid Punch Object
 with(instance_create(x,y,obj_midpunch)){ // hitbox creation
     image_xscale = other.image_xscale;
-    var dmg = other.damage;
+    var dmg = other.damage + other.mPunchMod;
     with(instance_place(x,y,obj_player)){ // with another player
         hit -= dmg;
         image_blend = c_white; //hit flash
@@ -300,14 +316,14 @@ attacking = false;
 x = clamp(x, sprite_width/2, room_width - (sprite_width/2));
 y = clamp(y, sprite_height/2, room_height - (sprite_height/2));
 
-
 //switching movement control to other player
-var control = -1;
+control = -1;
 if(player_num == 0)
     control = 1;
 else
     control = 0;
-
+rsv = gamepad_axis_value(player_num, gp_axisrv);
+rsh = gamepad_axis_value(player_num, gp_axisrh);
 //collecting analog stick input
 var h_move = gamepad_axis_value(control, gp_axislh); //horizontal movement
 var v_move = gamepad_axis_value(control, gp_axislv); //vertical movement
@@ -325,7 +341,7 @@ if(hspeed != 0 &amp;&amp; !attacking){
             sprite_index = spr_move;
         }
         else{               // if the sprite is moving left
-            spr_index = spr_reverse;
+            sprite_index = spr_reverse;
         }
     }
     else{                   // if the sprite is facing left
@@ -337,17 +353,18 @@ if(hspeed != 0 &amp;&amp; !attacking){
         }
     }
     image_speed = abs(hspeed) / max_speed; // slow movement sprite to start, builds up to run in theory
-    alarm[6] = 10;
+    alarm[6] = 5;
 }
 
 //jumping
-if(gamepad_button_check_pressed(control, gp_face1) || keyboard_check(vk_space) &amp;&amp; grounded){
-    vspeed -= 90;
-    grounded = false;
-}
 if(!grounded){
     vspeed += 5;
 }
+if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
+    vspeed -= 80;
+    grounded = false;
+}
+
 </string>
           </argument>
         </arguments>
@@ -376,8 +393,8 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderrb) &amp;&amp; !attacking
     sprite_index = spr_midpunch;
     image_index = 0;// Set to beginning of animation
     alarm[2] = 5;   // Mid punch object creation
-    alarm[0] = 10;  // Reset attack flag
-    alarm[6] = 10;  // Reset to idle animation
+    alarm[0] = attack_speed;  // Reset attack flag
+    alarm[6] = min(recovery, image_number);  // Reset to idle animation
     show_debug_message("Mid Punch from " + string(player_num + 1));
 }
 
@@ -387,8 +404,8 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !attacking)
     sprite_index = spr_highpunch;
     image_index = 0;// Set to beginning of animation
     alarm[3] = 5;   // High punch object creation
-    alarm[0] = 20;  // Reset attack flag
-    alarm[6] = 10;  // Reset to idle animation
+    alarm[0] = attack_speed;  // Reset attack flag
+    alarm[6] = min(recovery, image_number);  // Reset to idle animation
     show_debug_message("High punch from " + string(player_num + 1));
 }
 // Low Kick
@@ -397,8 +414,8 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderlb) &amp;&amp; !attacking
     sprite_index = spr_lowkick;
     image_index = 0;// Set to beginning of animation
     alarm[5] = 5;   // Low kick object creation
-    alarm[0] = 15;  // Reset attack flag
-    alarm[6] = 10;  // Reset to idle animation
+    alarm[0] = attack_speed;  // Reset attack flag
+    alarm[6] = min(recovery, image_number);  // Reset to idle animation
     show_debug_message("Low kick from " + string(player_num + 1));
 }
 // Mid Kick
@@ -407,8 +424,8 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking)
     sprite_index = spr_midkick;
     image_index = 0;// Set to beginning of animation
     alarm[4] = 5;   // Mid kick object creation
-    alarm[0] = 10;  // Reset attack flag
-    alarm[6] = 10;  // Reset to idle animation
+    alarm[0] = attack_speed;  // Reset attack flag
+    alarm[6] = min(recovery, image_number);  // Reset to idle animation
     show_debug_message("Mid Kick from " + string(player_num + 1));
 }
 </string>
@@ -432,19 +449,23 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking)
           <argument>
             <kind>1</kind>
             <string>///Facing
-notme = true;
-if(x &lt; instance_exists(obj_player).x){
-    image_xscale = 1;
+if(!global.game){
+    if(id == global.p0)
+        opposing = global.p1;
+    else
+        opposing = global.p0;
+
+    if(x &lt; opposing.x){
+        image_xscale = 1;
+    }
+    else{
+        image_xscale = -1;
 }
-else{
-    image_xscale = -1;
 }
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="obj_floor">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -461,9 +482,12 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Stop player from falling through floor
-grounded = true;
-vspeed = 0;
+            <string>///Grapple Hook
+
+with(grap){
+    x = owner.x + (owner.rsh * 200);   
+    y = owner.y + (owner.rsv * 200);
+}
 </string>
           </argument>
         </arguments>

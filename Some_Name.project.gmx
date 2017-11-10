@@ -23,6 +23,10 @@
     <sprites name="Healthbar">
       <sprite>sprites\spr_healthbar_new</sprite>
     </sprites>
+    <sprites name="Experimental">
+      <sprite>sprites\spr_hook</sprite>
+    </sprites>
+    <sprite>sprites\spr_tracer</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
@@ -40,6 +44,8 @@
     <object>objects\obj_midkick</object>
     <object>objects\obj_lowkick</object>
     <object>objects\obj_healthbar</object>
+    <object>objects\obj_hook</object>
+    <object>objects\obj_tracer</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_arena</room>
