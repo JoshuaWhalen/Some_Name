@@ -25,12 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Destroy arrow with low stick input
-if(abs(owner.rsh) &lt; 150 &amp;&amp; abs(owner.rsv) &lt; 150){
-    owner.pointing = false;
+            <string>///Set angle
+if(instance_exists(owner)){
+    x = owner.pointer.x;
+    y = owner.pointer.y;
+    image_angle = point_direction(owner.x, owner.y, owner.pointer.x, owner.pointer.y);
+}
+else{
     instance_destroy();
 }
-
 </string>
           </argument>
         </arguments>
@@ -51,15 +54,12 @@ if(abs(owner.rsh) &lt; 150 &amp;&amp; abs(owner.rsv) &lt; 150){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Set angle
-if(instance_exists(owner)){
-    x = owner.pointer.x;
-    y = owner.pointer.y;
-    image_angle = point_direction(owner.x, owner.y, owner.pointer.x, owner.pointer.y);
-}
-else{
+            <string>///Destroy arrow with low stick input
+if(abs(owner.rsh) &lt; 150 &amp;&amp; abs(owner.rsv) &lt; 150){
+    owner.pointing = false;
     instance_destroy();
 }
+
 </string>
           </argument>
         </arguments>

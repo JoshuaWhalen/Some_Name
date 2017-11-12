@@ -91,7 +91,6 @@ with(instance_place(x,y,obj_player)){ //with player collision
         }
     }
 }
-// Game Maker asteroids tutorial
 </string>
           </argument>
         </arguments>
