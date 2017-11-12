@@ -23,7 +23,7 @@
     <sprites name="Healthbar">
       <sprite>sprites\spr_healthbar_new</sprite>
     </sprites>
-    <sprites name="Experimental">
+    <sprites name="Grappling Hook">
       <sprite>sprites\spr_hook</sprite>
       <sprite>sprites\spr_tracer</sprite>
       <sprite>sprites\spr_arrow</sprite>
