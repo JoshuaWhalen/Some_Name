@@ -73,6 +73,8 @@ arrrow = 0;
 damage = 5;         //Amount of damage player deals
 max_speed = 15;     //Maximum horizontal speed of player
 max_hit = 100;      //Maximum hit points
+gravy = 4;          //Yes, I called the gravity modifier gravy
+jump = 80;          //How high the player will jump
 hit = max_hit;      //Do not touch. Modify hit point values through enemy damage or max_hit
 hooked_velocity = 70;   // how fast teh player will move when landing a hook
 recovery = 20;      /*Amount of animation played
@@ -80,8 +82,10 @@ recovery = 20;      /*Amount of animation played
                        - Already implemented, no need to manually check for exceeding value
                     */
 attack_speed = 10;  //Frame amount to reset attack flag
-//Additional damage modifiers. Already applied on attack
-/*
+
+
+/*Additional damage modifiers. Already applied on attack
+
   Allows for a more durable damage system allowing for more direct damage modification
   Ex. dump all damage into uppercut for a one hit, but no jab damage
   set hPunchMod to +90 and and mPunchMod to -damage to nullify the +damage from base model
@@ -508,10 +512,10 @@ if(hspeed != 0 &amp;&amp; !attacking){
 
 //jumping
 if(!grounded){
-    vspeed += 4;
+    vspeed += gravy;
 }
 if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
-    vspeed -= 80;
+    vspeed -= jump;
     grounded = false;
 }
 

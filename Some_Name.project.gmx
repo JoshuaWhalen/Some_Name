@@ -36,6 +36,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\setStats.gml</script>
+    <script>scripts\setExDamage.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_floor</object>
