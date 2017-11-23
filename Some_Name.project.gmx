@@ -28,6 +28,7 @@
       <sprite>sprites\spr_tracer</sprite>
       <sprite>sprites\spr_arrow</sprite>
     </sprites>
+    <sprite>sprites\spr_cursor_v2</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
@@ -38,6 +39,9 @@
     <script>scripts\setStats.gml</script>
     <script>scripts\setExDamage.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_options</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_floor</object>
     <object>objects\obj_player</object>
@@ -49,10 +53,11 @@
     <object>objects\obj_hook</object>
     <object>objects\obj_tracer</object>
     <object>objects\obj_arrow</object>
+    <object>objects\obj_menu</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_menu</room>
     <room>rooms\rm_arena</room>
-    <room>rooms\menu</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
