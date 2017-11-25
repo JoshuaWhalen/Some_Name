@@ -47,7 +47,10 @@ pointer = instance_create(x, y, obj_tracer);
 pointer.owner = id;
 arrrow = 0;
 
-
+//for Pause
+if(global.pause){
+    exit;
+}
 </string>
           </argument>
         </arguments>
@@ -173,6 +176,7 @@ with(instance_create(x,y,obj_lowkick)){ // hitbox creation
         hit -= dmg;
         image_blend = c_white; //hit flash
         alarm[1] = 2;
+        audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
     }
 }
 </string>
@@ -205,6 +209,7 @@ with(instance_create(x,y,obj_midkick)){ // hitbox creation
         hit -= dmg;                     // damage from attacking fighter hitting recieving fighter
         image_blend = c_white;  // hit flash
         alarm[1] = 2;           // reset player colour
+        audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
     }
 }
 </string>
@@ -237,6 +242,7 @@ with(instance_create(x,y,obj_highpunch)){ // hitbox creation
         hit -= dmg * 2;
         image_blend = c_white; //hit flash
         alarm[1] = 2;
+        audio_play_sound(snd_punch, 0, 0); //sound effect - punch
     }
 }
 </string>
@@ -269,6 +275,7 @@ with(instance_create(x,y,obj_midpunch)){ // hitbox creation
         hit -= dmg;
         image_blend = c_white; //hit flash
         alarm[1] = 2;
+        audio_play_sound(snd_punch, 0, 0); //sound effect - punch
     }
 }
 </string>
@@ -346,6 +353,7 @@ attacking = false;
             <kind>1</kind>
             <string>///Grapple Arrow
 
+
 with(pointer){
     if(abs(owner.rsv) &gt;= 150 || abs(owner.rsh) &gt;= 150){
         x = owner.x + (owner.rsh);   
@@ -362,6 +370,12 @@ with(pointer){
         y = owner.y;
     }
 }
+
+//Pausing in the step event
+if(global.pause){
+    exit;
+}
+
 </string>
           </argument>
         </arguments>
@@ -385,6 +399,7 @@ with(pointer){
             <string>///Attacking
 if(pointing){ // arrow exists
     if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !shot){ // grapple is ready and Right bumper
+        audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         shot = true; // is shot
         hook = instance_create(x,y, obj_hook); //create hook
         hook.owner = id; //set owner ID
@@ -398,6 +413,7 @@ if(pointing){ // arrow exists
 else{
 // Mid Punch
 if(gamepad_button_check_pressed(player_num, gp_shoulderrb) &amp;&amp; !attacking){
+    audio_play_sound(snd_swing, 1, 0); //sound effect - swing
     attacking = true;
     sprite_index = spr_midpunch;
     image_index = 0;// Set to beginning of animation
@@ -409,6 +425,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderrb) &amp;&amp; !attacking
 
 // High Punch
 if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !attacking){
+    audio_play_sound(snd_swing, 1, 0); //sound effect - swing
     attacking = true;
     sprite_index = spr_highpunch;
     image_index = 0;// Set to beginning of animation
@@ -419,6 +436,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !attacking)
 }
 // Low Kick
 if(gamepad_button_check_pressed(player_num, gp_shoulderlb) &amp;&amp; !attacking){
+    audio_play_sound(snd_swing, 1, 0); //sound effect - swing
     attacking = true;
     sprite_index = spr_lowkick;
     image_index = 0;// Set to beginning of animation
@@ -429,6 +447,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderlb) &amp;&amp; !attacking
 }
 // Mid Kick
 if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking){
+    audio_play_sound(snd_swing, 1, 0); //sound effect - swing
     attacking = true;
     sprite_index = spr_midkick;
     image_index = 0;// Set to beginning of animation
@@ -437,6 +456,11 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking)
     alarm[6] = min(recovery, image_number);  // Reset to idle animation
     show_debug_message("Mid Kick from " + string(player_num + 1));
 }
+}
+
+//Pausing in the step event
+if(global.pause){
+    exit;
 }
 </string>
           </argument>
@@ -519,6 +543,11 @@ if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
     grounded = false;
 }
 
+//Pausing in the step event
+if(global.pause){
+    exit;
+}
+
 </string>
           </argument>
         </arguments>
@@ -552,6 +581,11 @@ if(!global.game){
     else{
         image_xscale = -1;
 }
+}
+
+//Pausing in the step event
+if(global.pause){
+    exit;
 }
 </string>
           </argument>
