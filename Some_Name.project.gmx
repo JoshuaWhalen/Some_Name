@@ -9,6 +9,7 @@
     <sound>sound\snd_swing</sound>
     <sound>sound\snd_kick</sound>
     <sound>sound\snd_punch</sound>
+    <sound>sound\snd_select</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_floor</sprite>

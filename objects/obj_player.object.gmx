@@ -47,10 +47,6 @@ pointer = instance_create(x, y, obj_tracer);
 pointer.owner = id;
 arrrow = 0;
 
-//for Pause
-if(global.pause){
-    exit;
-}
 </string>
           </argument>
         </arguments>
@@ -353,7 +349,13 @@ attacking = false;
             <kind>1</kind>
             <string>///Grapple Arrow
 
+//For the pausing in the step event
+if(global.pause){ //If paused then stop running the script
+    exit;
+}
 
+
+//Grapple Arrow 
 with(pointer){
     if(abs(owner.rsv) &gt;= 150 || abs(owner.rsh) &gt;= 150){
         x = owner.x + (owner.rsh);   
@@ -371,10 +373,6 @@ with(pointer){
     }
 }
 
-//Pausing in the step event
-if(global.pause){
-    exit;
-}
 
 </string>
           </argument>
@@ -397,6 +395,13 @@ if(global.pause){
           <argument>
             <kind>1</kind>
             <string>///Attacking
+
+//Pausing in the step event
+if(global.pause){ //If paused then stop running the script
+    exit; 
+}
+
+//Attacking
 if(pointing){ // arrow exists
     if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !shot){ // grapple is ready and Right bumper
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
@@ -458,10 +463,7 @@ if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking)
 }
 }
 
-//Pausing in the step event
-if(global.pause){
-    exit;
-}
+
 </string>
           </argument>
         </arguments>
@@ -483,6 +485,13 @@ if(global.pause){
           <argument>
             <kind>1</kind>
             <string>///Movement
+
+//Pausing in the step event
+if(global.pause){ //If paused then stop running the script
+    exit;
+}
+
+//Movement 
 //Supposed to prevent player from going outside of the screen
 x = clamp(x, sprite_width/2, room_width - (sprite_width/2));
 y = clamp(y, sprite_height/2, room_height - (sprite_height/2));
@@ -543,10 +552,7 @@ if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
     grounded = false;
 }
 
-//Pausing in the step event
-if(global.pause){
-    exit;
-}
+
 
 </string>
           </argument>
@@ -569,6 +575,13 @@ if(global.pause){
           <argument>
             <kind>1</kind>
             <string>///Facing
+
+//Pausing in the step event
+if(global.pause){ //If paused then stop running the script
+    exit; 
+}
+
+//Facing
 if(!global.game){
     if(id == global.p0)
         opposing = global.p1;
@@ -583,10 +596,7 @@ if(!global.game){
 }
 }
 
-//Pausing in the step event
-if(global.pause){
-    exit;
-}
+
 </string>
           </argument>
         </arguments>
