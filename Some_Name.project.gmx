@@ -50,17 +50,21 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_floor</object>
-    <object>objects\obj_player</object>
-    <object>objects\obj_midpunch</object>
-    <object>objects\obj_highpunch</object>
-    <object>objects\obj_midkick</object>
-    <object>objects\obj_lowkick</object>
-    <object>objects\obj_healthbar</object>
-    <object>objects\obj_hook</object>
-    <object>objects\obj_tracer</object>
-    <object>objects\obj_arrow</object>
-    <object>objects\obj_menu</object>
-    <object>objects\obj_pause</object>
+    <objects name="Player">
+      <object>objects\obj_player</object>
+      <object>objects\obj_highpunch</object>
+      <object>objects\obj_midpunch</object>
+      <object>objects\obj_midkick</object>
+      <object>objects\obj_lowkick</object>
+      <object>objects\obj_hook</object>
+      <object>objects\obj_tracer</object>
+      <object>objects\obj_healthbar</object>
+      <object>objects\obj_arrow</object>
+    </objects>
+    <objects name="Pause">
+      <object>objects\obj_menu</object>
+      <object>objects\obj_pause</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
