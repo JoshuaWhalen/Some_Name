@@ -409,6 +409,7 @@ if(pointing){ // arrow exists
         hook = instance_create(x,y, obj_hook); //create hook
         hook.owner = id; //set owner ID
         with(hook){ //with hook
+            image_speed = 2;
             image_angle = owner.arrow.image_angle; //set image angle to arrow angle
             direction = image_angle; // make hook movement direction match angle
             speed = 45; // give hook speed

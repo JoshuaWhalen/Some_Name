@@ -77,6 +77,7 @@ instance_destroy(); // kill hook
           <argument>
             <kind>1</kind>
             <string>///Check for Collision
+image_blend = owner.image_blend;
 with(instance_place(x,y,obj_player)){ //with player collision
     if(id != other.owner){ // if grapple hits the opponent
         with(other.owner){//with grappler
