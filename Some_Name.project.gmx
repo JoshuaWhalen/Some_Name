@@ -39,6 +39,7 @@
   <backgrounds name="background">
     <background>background\BG_image</background>
     <background>background\bg_rockwall</background>
+    <background>background\bg_temp</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -61,7 +62,7 @@
       <object>objects\obj_healthbar</object>
       <object>objects\obj_arrow</object>
     </objects>
-    <objects name="Pause">
+    <objects name="Menus">
       <object>objects\obj_menu</object>
       <object>objects\obj_pause</object>
     </objects>
