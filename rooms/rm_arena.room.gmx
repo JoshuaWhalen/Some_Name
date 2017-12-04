@@ -2,7 +2,7 @@
 <room>
   <caption></caption>
   <width>2800</width>
-  <height>1000</height>
+  <height>1600</height>
   <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
@@ -12,7 +12,7 @@
   <showcolour>-1</showcolour>
   <code>global.game = false;</code>
   <enableViews>0</enableViews>
-  <clearViewBackground>-1</clearViewBackground>
+  <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>0</isSet>

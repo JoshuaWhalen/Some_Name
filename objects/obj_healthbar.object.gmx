@@ -49,7 +49,8 @@ me = id;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>me = id;
+            <string>///Track living player. destroy otherwise
+me = id;
 if (instance_exists(owner)){
     move_towards_point(owner.x, y, speed);
 
@@ -59,16 +60,9 @@ if (instance_exists(owner)){
     //set new healthbar health;
     image_index = (owner.hit / owner.max_hit) * 100;
 }
-//disabled
-/*if(owner.hit &lt; 1){
-    sprite_index = spr_healthbar_full;
+else{
+    instance_destroy();
 }
-else if(owner.hit &lt; 2){
-    sprite_index = spr_healthbar_66;
-}
-else if(owner.hit &lt; 3){
-    sprite_index = spr_healthbar_33;
-}*/
 if(owner.hit &lt;= 0){
     global.game = true;
     with(owner){
