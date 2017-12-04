@@ -145,6 +145,7 @@ with(instance_create(x, y, obj_parry)){
 with(stars){
     instance_destroy();
 }
+stars = 0;
 </string>
           </argument>
         </arguments>
@@ -220,12 +221,24 @@ image_speed = 1;
 with(instance_create(x,y,obj_lowkick)){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = other.damage + other.lKickMod;
-    with(instance_place(x,y,obj_player)){ // with another player
-        hit -= dmg;
-        image_blend = c_white; //hit flash
-        alarm[1] = 2;
-        audio_play_sound(snd_kick, 0, 0); //sound effect - kick
-        hspeed += 10 * other.image_xscale; 
+    if(instance_place(x,y,obj_parry)){ // if punch hit parry
+        attacking = true; // player is stunned
+        stars = instance_create(owner.x,owner.y - 40,obj_stars); // create stars object signifying stunned
+        stars.owner = other.id;
+        alarm[0] = 90; // reset stunned
+        alarm[8] = 90; // destroy stars
+    }
+    else{
+        var player = instance_place(x,y,obj_player);
+        if(player != other.id){
+            with(instance_place(x,y,obj_player)){ // with another player
+                hit -= dmg;
+                image_blend = c_white; //hit flash
+                alarm[1] = 2;
+                audio_play_sound(snd_kick, 0, 0); //sound effect - kick
+                hspeed += 10 * other.image_xscale;  // give vertical movement to hit target
+            }
+        }
     }
 }
 </string>
@@ -254,13 +267,25 @@ with(instance_create(x,y,obj_lowkick)){ // hitbox creation
 with(instance_create(x,y,obj_midkick)){ // hitbox creation
     image_xscale = other.image_xscale;  // change hitbox to face player
     var dmg = other.damage + other.mKickMod;             // pass damage through
-    with(instance_place(x,y,obj_player)){ // with another player
-        hit -= dmg;                     // damage from attacking fighter hitting recieving fighter
-        image_blend = c_white;  // hit flash
-        alarm[1] = 2;           // reset player colour
-        audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
-        hspeed += 10 * other.image_xscale;
-        vspeed -= 10;
+    if(instance_place(owner.x,owner.y - 40,obj_parry)){ // if punch hit parry
+        attacking = true; // player is stunned
+        stars = instance_create(x,y,obj_stars); // create stars object signifying stunned
+        stars.owner = other.id;
+        alarm[0] = 90; // reset stunned
+        alarm[8] = 90; // destroy stars
+    }
+    else{
+        var player = instance_place(x,y,obj_player);
+        if(player != other.id){
+            with(instance_place(x,y,obj_player)){ // with another player
+                hit -= dmg;                     // damage from attacking fighter hitting recieving fighter
+                image_blend = c_white;  // hit flash
+                alarm[1] = 2;           // reset player colour
+                audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
+                hspeed += 10 * other.image_xscale; //add movement to kicked target
+                vspeed -= 10;//give vertical movement to target
+            }
+        }    
     }
 }
 </string>
@@ -289,11 +314,23 @@ with(instance_create(x,y,obj_midkick)){ // hitbox creation
 with(instance_create(x,y,obj_highpunch)){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = other.damage + other.hPunchMod;
-    with(instance_place(x,y,obj_player)){ // with another player
-        hit -= dmg * 2;
-        image_blend = c_white; //hit flash
-        alarm[1] = 2;
-        audio_play_sound(snd_punch, 0, 0); //sound effect - punch
+    if(instance_place(x,y,obj_parry)){ // if punch hit parry
+        attacking = true; // player is stunned
+        stars = instance_create(owner.x,owner.y - 40,obj_stars); // create stars object signifying stunned
+        stars.owner = other.id;
+        alarm[0] = 90; // reset stunned
+        alarm[8] = 90; // destroy stars
+    }
+    else{
+        var player = instance_place(x,y,obj_player);
+        if(player != other.id){
+            with(instance_place(x,y,obj_player)){ // with another player
+                hit -= dmg * 2;
+                image_blend = c_white; //hit flash
+                alarm[1] = 2;
+                audio_play_sound(snd_punch, 0, 0); //sound effect - punch
+            }
+        }
     }
 }
 </string>
@@ -324,13 +361,14 @@ with(instance_create(x,y,obj_midpunch)){ // hitbox creation
     var dmg = other.damage + other.mPunchMod;
     if(instance_place(x,y,obj_parry)){ // if punch hit parry
         attacking = true; // player is stunned
-        stars = instance_create(x,y,obj_stars); // create stars object signifying stunned
+        stars = instance_create(owner.x,owner.y - 40,obj_stars); // create stars object signifying stunned
+        stars.owner = other.id;
         alarm[0] = 90; // reset stunned
         alarm[8] = 90; // destroy stars
     }
     else{
         var player = instance_place(x,y,obj_player);
-        if(player != id){
+        if(player != other.id){
             with(player){ // with another player
                 hit -= dmg;
                 image_blend = c_white; //hit flash
