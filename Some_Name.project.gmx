@@ -35,6 +35,21 @@
       <sprite>sprites\spr_arrow</sprite>
     </sprites>
     <sprite>sprites\spr_cursor_v2</sprite>
+    <sprites name="Character Selection">
+      <sprite>sprites\spr_playbutton</sprite>
+      <sprite>sprites\spr_char_aqua</sprite>
+      <sprite>sprites\spr_char_blue</sprite>
+      <sprite>sprites\spr_char_fuchsia</sprite>
+      <sprite>sprites\spr_char_green</sprite>
+      <sprite>sprites\spr_char_lime</sprite>
+      <sprite>sprites\spr_char_orange</sprite>
+      <sprite>sprites\spr_char_purple</sprite>
+      <sprite>sprites\spr_char_red</sprite>
+      <sprite>sprites\spr_char_white</sprite>
+      <sprite>sprites\spr_char_yellow</sprite>
+      <sprite>sprites\spr_plr1_arrow</sprite>
+      <sprite>sprites\spr_plr2_arrow</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
@@ -66,10 +81,29 @@
       <object>objects\obj_menu</object>
       <object>objects\obj_pause</object>
     </objects>
+    <objects name="Character Selection">
+      <object>objects\obj_char_blue</object>
+      <object>objects\obj_char_aqua</object>
+      <object>objects\obj_char_fuchsia</object>
+      <object>objects\obj_char_green</object>
+      <object>objects\obj_char_lime</object>
+      <object>objects\obj_char_orange</object>
+      <object>objects\obj_char_purple</object>
+      <object>objects\obj_char_red</object>
+      <object>objects\obj_char_white</object>
+      <object>objects\obj_char_yellow</object>
+      <object>objects\obj_playbutton</object>
+      <object>objects\obj_plr1_select</object>
+      <object>objects\obj_plr2_select</object>
+      <object>objects\obj_plr1_arrow</object>
+      <object>objects\obj_plr2_arrow</object>
+      <object>objects\obj_inviso</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
     <room>rooms\rm_arena</room>
+    <room>rooms\rm_char_select</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

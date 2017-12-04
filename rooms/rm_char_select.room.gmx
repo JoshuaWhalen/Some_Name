@@ -7,10 +7,10 @@
   <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
-  <persistent>0</persistent>
-  <colour>0</colour>
+  <persistent>-1</persistent>
+  <colour>8421504</colour>
   <showcolour>-1</showcolour>
-  <code>global.game = false;</code>
+  <code></code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -31,7 +31,7 @@
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -41,7 +41,7 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="2048" hview="1536" xport="0" yport="0" wport="2048" hport="1536" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -51,9 +51,22 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_floor" x="1408" y="992" name="inst_E00CB55E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="1984" y="800" name="inst_92B927F3" locked="0" code="player_num = 1;&#xA;image_blend = global.clr2;&#xA;global.p1 = id;&#xA;&#xA;if(global.clr2 == c_blue){&#xA;&#xA;    setStats(inst_92B927F3, 5, 100, 100, 20, 18, 4, 70, 80)&#xA;&#xA;}else if(global.clr2 == c_aqua){&#xA;&#xA;    setStats(inst_92B927F3, 5, 17, 108, 20, 8, 4, 70, 80)&#xA;&#xA;}else if(global.clr2 == c_fuchsia){&#xA;&#xA;    setStats(inst_92B927F3, 6, 15, 116, 20, 10, 4, 70, 80)&#xA;&#xA;}else if(global.clr2 == c_green){&#xA;&#xA;    setStats(inst_92B927F3, 7, 16, 100, 20, 9, 4, 70, 80)&#xA;&#xA;}else if(global.clr2 == c_lime){&#xA;&#xA;    setStats(inst_92B927F3, 6, 16, 108, 20, 9, 4, 70, 80)&#xA;&#xA;}else if(global.clr2 == c_orange){&#xA;&#xA;    setStats(inst_92B927F3, 7, 15, 108, 20, 10, 4, 70, 80)&#xA;&#xA;}else if(global.clr2 == c_purple){&#xA;&#xA;    setStats(inst_92B927F3, 6, 17, 100, 20, 8, 4, 70, 80)&#xA;&#xA;}else if(global.clr2 == c_red){&#xA;&#xA;    setStats(inst_92B927F3, 8, 15, 100, 20, 10, 4, 70, 80)&#xA;&#xA;}else if(global.clr2 == c_silver){&#xA;&#xA;    setStats(inst_92B927F3, 5, 16, 116, 20, 9, 4, 70, 80)&#xA;&#xA;}else if(global.clr2 == c_yellow){&#xA;&#xA;    setStats(inst_92B927F3, 5, 15, 124, 20, 10, 4, 70, 80)&#xA;&#xA;}&#xA;" scaleX="-0.969924807548523" scaleY="0.970588207244873" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="928" y="800" name="inst_2F50EAB1" locked="0" code="player_num = 0;&#xA;global.p0 = id;&#xA;&#xA;image_blend = global.clr1;&#xA;&#xA;if(global.clr1 == c_blue){&#xA;&#xA;    setStats(inst_2F50EAB1, 5, 18, 100, 20, 7, 4, 70, 80);    &#xA;&#xA;}else if(global.clr1 == c_aqua){&#xA;&#xA;    setStats(inst_2F50EAB1, 5, 17, 108, 20, 8, 4, 70, 80);    &#xA;&#xA;}else if(global.clr1 == c_fuchsia){&#xA;&#xA;    setStats(inst_2F50EAB1, 6, 15, 116, 20, 10, 4, 70, 80);    &#xA;&#xA;}else if(global.clr1 == c_green){&#xA;&#xA;    setStats(inst_2F50EAB1, 7, 16, 100, 20, 9, 4, 70, 80);    &#xA;&#xA;}else if(global.clr1 == c_lime){&#xA;&#xA;    setStats(inst_2F50EAB1, 6, 16, 108, 20, 9, 4, 70, 80);    &#xA;&#xA;}else if(global.clr1 == c_orange){&#xA;&#xA;    setStats(inst_2F50EAB1, 7, 15, 108, 20, 10, 4, 70, 80);    &#xA;&#xA;}else if(global.clr1 == c_purple){&#xA;&#xA;    setStats(inst_2F50EAB1, 6, 17, 100, 20, 8, 4, 70, 80);    &#xA;&#xA;}else if(global.clr1 == c_red){&#xA;&#xA;    setStats(inst_2F50EAB1, 8, 17, 100, 20, 10, 4, 70, 80);    &#xA;&#xA;}else if(global.clr1 == c_silver){&#xA;&#xA;    setStats(inst_2F50EAB1, 5, 16, 116, 20, 9, 4, 70, 80);    &#xA;&#xA;}else if(global.clr1 == c_yellow){&#xA;&#xA;    setStats(inst_2F50EAB1, 5, 15, 124, 20, 10, 4, 70, 80);    &#xA;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_blue" x="992" y="32" name="inst_9361E2D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_aqua" x="1216" y="32" name="inst_41A29626" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_fuchsia" x="1440" y="32" name="inst_2B95A613" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_playbutton" x="1120" y="800" name="inst_A0556F52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_plr1_arrow" x="480" y="320" name="inst_DF193848" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_green" x="1664" y="32" name="inst_9871E125" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_lime" x="768" y="320" name="inst_7E2D4F7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_orange" x="992" y="320" name="inst_1D0699A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_purple" x="1216" y="320" name="inst_3D418D86" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_red" x="1440" y="320" name="inst_AA6B4B41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_white" x="768" y="32" name="inst_2AD283CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_char_yellow" x="1664" y="320" name="inst_A95E16AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_plr1_select" x="928" y="864" name="inst_F4705B2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_plr2_select" x="1760" y="864" name="inst_DB306D10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_plr2_arrow" x="2336" y="320" name="inst_8BC62872" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_inviso" x="1280" y="672" name="inst_8E3283F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
