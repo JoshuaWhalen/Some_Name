@@ -46,7 +46,7 @@ healthbar.owner = id;
 pointer = instance_create(x, y, obj_tracer);
 pointer.owner = id;
 arrrow = 0;
-
+stars = 0;
 </string>
           </argument>
         </arguments>
@@ -93,6 +93,58 @@ mPunchMod = 0;      //Additional jab damage
 hPunchMod = 0;      //Additional uppercut damage
 mKickMod = 0;       //Additional mid lick damage
 lKickMod = 0;       //Additional low kick damage
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="9">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create Parry
+with(instance_create(x, y, obj_parry)){
+    image_xscale = other.image_xscale;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy stars
+with(stars){
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -172,7 +224,8 @@ with(instance_create(x,y,obj_lowkick)){ // hitbox creation
         hit -= dmg;
         image_blend = c_white; //hit flash
         alarm[1] = 2;
-        audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
+        audio_play_sound(snd_kick, 0, 0); //sound effect - kick
+        hspeed += 10 * other.image_xscale; 
     }
 }
 </string>
@@ -206,6 +259,8 @@ with(instance_create(x,y,obj_midkick)){ // hitbox creation
         image_blend = c_white;  // hit flash
         alarm[1] = 2;           // reset player colour
         audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
+        hspeed += 10 * other.image_xscale;
+        vspeed -= 10;
     }
 }
 </string>
@@ -267,11 +322,22 @@ with(instance_create(x,y,obj_highpunch)){ // hitbox creation
 with(instance_create(x,y,obj_midpunch)){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = other.damage + other.mPunchMod;
-    with(instance_place(x,y,obj_player)){ // with another player
-        hit -= dmg;
-        image_blend = c_white; //hit flash
-        alarm[1] = 2;
-        audio_play_sound(snd_punch, 0, 0); //sound effect - punch
+    if(instance_place(x,y,obj_parry)){ // if punch hit parry
+        attacking = true; // player is stunned
+        stars = instance_create(x,y,obj_stars); // create stars object signifying stunned
+        alarm[0] = 90; // reset stunned
+        alarm[8] = 90; // destroy stars
+    }
+    else{
+        var player = instance_place(x,y,obj_player);
+        if(player != id){
+            with(player){ // with another player
+                hit -= dmg;
+                image_blend = c_white; //hit flash
+                alarm[1] = 2;
+                audio_play_sound(snd_punch, 0, 0); //sound effect - punch
+            }
+        }
     }
 }
 </string>
@@ -401,7 +467,7 @@ if(global.pause){ //If paused then stop running the script
     exit; 
 }
 
-//Attacking
+//Grapple
 if(pointing){ // arrow exists
     if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !shot){ // grapple is ready and Right bumper
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
@@ -416,52 +482,64 @@ if(pointing){ // arrow exists
         } 
     }
 }
+//Attacks
 else{
-// Mid Punch
-if(gamepad_button_check_pressed(player_num, gp_shoulderrb) &amp;&amp; !attacking){
-    audio_play_sound(snd_swing, 1, 0); //sound effect - swing
-    attacking = true;
-    sprite_index = spr_midpunch;
-    image_index = 0;// Set to beginning of animation
-    alarm[2] = 5;   // Mid punch object creation
-    alarm[0] = attack_speed;  // Reset attack flag
-    alarm[6] = min(recovery, image_number);  // Reset to idle animation
-    show_debug_message("Mid Punch from " + string(player_num + 1));
-}
+    // Mid Punch
+    if(gamepad_button_check_pressed(player_num, gp_shoulderrb) &amp;&amp; !attacking){
+        audio_play_sound(snd_swing, 1, 0); //sound effect - swing
+        attacking = true;
+        sprite_index = spr_midpunch;
+        image_index = 0;// Set to beginning of animation
+        alarm[2] = 5;   // Mid punch object creation
+        alarm[0] = attack_speed;  // Reset attack flag
+        alarm[6] = min(recovery, image_number);  // Reset to idle animation
+        show_debug_message("Mid Punch from " + string(player_num + 1));
+    }
 
-// High Punch
-if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !attacking){
-    audio_play_sound(snd_swing, 1, 0); //sound effect - swing
-    attacking = true;
-    sprite_index = spr_highpunch;
-    image_index = 0;// Set to beginning of animation
-    alarm[3] = 5;   // High punch object creation
-    alarm[0] = attack_speed;  // Reset attack flag
-    alarm[6] = min(recovery, image_number);  // Reset to idle animation
-    show_debug_message("High punch from " + string(player_num + 1));
-}
-// Low Kick
-if(gamepad_button_check_pressed(player_num, gp_shoulderlb) &amp;&amp; !attacking){
-    audio_play_sound(snd_swing, 1, 0); //sound effect - swing
-    attacking = true;
-    sprite_index = spr_lowkick;
-    image_index = 0;// Set to beginning of animation
-    alarm[5] = 5;   // Low kick object creation
-    alarm[0] = attack_speed;  // Reset attack flag
-    alarm[6] = min(recovery, image_number);  // Reset to idle animation
-    show_debug_message("Low kick from " + string(player_num + 1));
-}
-// Mid Kick
-if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking){
-    audio_play_sound(snd_swing, 1, 0); //sound effect - swing
-    attacking = true;
-    sprite_index = spr_midkick;
-    image_index = 0;// Set to beginning of animation
-    alarm[4] = 5;   // Mid kick object creation
-    alarm[0] = attack_speed;  // Reset attack flag
-    alarm[6] = min(recovery, image_number);  // Reset to idle animation
-    show_debug_message("Mid Kick from " + string(player_num + 1));
-}
+    // High Punch
+    if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !attacking){
+        audio_play_sound(snd_swing, 1, 0); //sound effect - swing
+        attacking = true;
+        sprite_index = spr_highpunch;
+        image_index = 0;// Set to beginning of animation
+        alarm[3] = 5;   // High punch object creation
+        alarm[0] = attack_speed;  // Reset attack flag
+        alarm[6] = min(recovery, image_number);  // Reset to idle animation
+        show_debug_message("High punch from " + string(player_num + 1));
+    }
+    // Low Kick
+    if(gamepad_button_check_pressed(player_num, gp_shoulderlb) &amp;&amp; !attacking){
+        audio_play_sound(snd_swing, 1, 0); //sound effect - swing
+        attacking = true;
+        sprite_index = spr_lowkick;
+        image_index = 0;// Set to beginning of animation
+        alarm[5] = 5;   // Low kick object creation
+        alarm[0] = attack_speed;  // Reset attack flag
+        alarm[6] = min(recovery, image_number);  // Reset to idle animation
+        show_debug_message("Low kick from " + string(player_num + 1));
+    }
+    // Mid Kick
+    if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking){
+        audio_play_sound(snd_swing, 1, 0); //sound effect - swing
+        attacking = true;
+        sprite_index = spr_midkick;
+        image_index = 0;// Set to beginning of animation
+        alarm[4] = 5;   // Mid kick object creation
+        alarm[0] = attack_speed;  // Reset attack flag
+        alarm[6] = min(recovery, image_number);  // Reset to idle animation
+        show_debug_message("Mid Kick from " + string(player_num + 1));
+    }
+    // Parry
+    if(gamepad_button_check_pressed(player_num, gp_face4) &amp;&amp; !attacking){
+        audio_play_sound(snd_swing, 1, 0);
+        attacking = true;
+        aprite_index = spr_parry;
+        image_index = 0;
+        alarm[9] = 9; // create parry obj
+        alarm[0] = attack_speed;
+        alarm[6] = min(recovery, image_number);
+        show_debug_message("Parry from " + string(player_num + 1));
+    }
 }
 
 
@@ -564,6 +642,7 @@ if((h_move != 0) || (v_move != 0) &amp;&amp; !attacking){
         //vspeed += max_speed * v_move;
     }
 }
+//movement sprite and player collision
 if(hspeed != 0 &amp;&amp; !attacking){
     if (image_xscale == 1){ // if the sprite is facing right
         if (h_move &gt; 0){    // if the sprite is moving right

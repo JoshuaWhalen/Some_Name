@@ -25,6 +25,8 @@
       <sprite>sprites\spr_midkick</sprite>
       <sprite>sprites\spr_midkick_hit</sprite>
       <sprite>sprites\spr_reverse</sprite>
+      <sprite>sprites\spr_parry</sprite>
+      <sprite>sprites\spr_parry_hit</sprite>
     </sprites>
     <sprites name="Healthbar">
       <sprite>sprites\spr_healthbar_new</sprite>
@@ -57,6 +59,7 @@
       <object>objects\obj_midpunch</object>
       <object>objects\obj_midkick</object>
       <object>objects\obj_lowkick</object>
+      <object>objects\obj_parry</object>
       <object>objects\obj_hook</object>
       <object>objects\obj_tracer</object>
       <object>objects\obj_healthbar</object>
