@@ -52,7 +52,7 @@ owner = 0;
             <string>///Track owner's position
 if(instance_exists(owner)){
     x = owner.x;
-    y = owner.y - 40;
+    y = owner.y - 145;
 }
 else{
     instance_destroy();

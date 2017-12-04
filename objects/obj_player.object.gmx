@@ -36,9 +36,10 @@ v_move = 0;
 //control flags + other
 friction = 3;
 attacking = false;
-grounded = true;
+grounded = false;
 pointing = false;
 shot = false;
+stunned = false;
 
 //additional objects
 healthbar = instance_create(x, y - (sprite_height/2) - 10, obj_healthbar);
@@ -75,7 +76,7 @@ max_hit = 100;      //Maximum hit points
 gravy = 4;          //Yes, I called the gravity modifier gravy
 jump = 80;          //How high the player will jump
 hit = max_hit;      //Do not touch. Modify hit point values through enemy damage or max_hit
-hooked_velocity = 70;   // how fast teh player will move when landing a hook
+hooked_velocity = 70;   // how fast the player will move when landing a hook
 recovery = 20;      /*Amount of animation played
                       Cannot exceed maximum sprite frames
                        - Already implemented, no need to manually check for exceeding value
@@ -93,6 +94,30 @@ mPunchMod = 0;      //Additional jab damage
 hPunchMod = 0;      //Additional uppercut damage
 mKickMod = 0;       //Additional mid lick damage
 lKickMod = 0;       //Additional low kick damage
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reset Stunned
+stunned = false;
 </string>
           </argument>
         </arguments>
@@ -218,15 +243,19 @@ image_speed = 1;
           <argument>
             <kind>1</kind>
             <string>///Low Kick Object
-with(instance_create(x,y,obj_lowkick)){ // hitbox creation
+tmp = instance_create(x,y,obj_lowkick);
+tmp.owner = id;
+with(id){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = other.damage + other.lKickMod;
     if(instance_place(x,y,obj_parry)){ // if punch hit parry
+        with(owner){
         attacking = true; // player is stunned
-        stars = instance_create(owner.x,owner.y - 40,obj_stars); // create stars object signifying stunned
+        stars = instance_create(x,y - 40,obj_stars); // create stars object signifying stunned
         stars.owner = other.id;
-        alarm[0] = 90; // reset stunned
-        alarm[8] = 90; // destroy stars
+        alarm[0] = 300; // reset stunned
+        alarm[8] = 300; // destroy stars
+        }
     }
     else{
         var player = instance_place(x,y,obj_player);
@@ -264,15 +293,19 @@ with(instance_create(x,y,obj_lowkick)){ // hitbox creation
           <argument>
             <kind>1</kind>
             <string>///Mid Kick Object
-with(instance_create(x,y,obj_midkick)){ // hitbox creation
+tmp = instance_create(x,y,obj_midkick);
+tmp.owner = id;
+with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;  // change hitbox to face player
     var dmg = other.damage + other.mKickMod;             // pass damage through
     if(instance_place(x,y,obj_parry)){ // if punch hit parry
+        with(owner){
         attacking = true; // player is stunned
-        stars = instance_create(owner.x,owner.y - 40,obj_stars); // create stars object signifying stunned
+        stars = instance_create(x,y - 40,obj_stars); // create stars object signifying stunned
         stars.owner = other.id;
-        alarm[0] = 90; // reset stunned
-        alarm[8] = 90; // destroy stars
+        alarm[0] = 300; // reset stunned
+        alarm[8] = 300; // destroy stars
+    }
     }
     else{
         var player = instance_place(x,y,obj_player);
@@ -312,15 +345,19 @@ with(instance_create(x,y,obj_midkick)){ // hitbox creation
           <argument>
             <kind>1</kind>
             <string>///High Punch Object
-with(instance_create(x,y,obj_highpunch)){ // hitbox creation
+tmp = instance_create(x,y,obj_highpunch);
+tmp.owner = id;
+with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = other.damage + other.hPunchMod;
     if(instance_place(x,y,obj_parry)){ // if punch hit parry
+    with(owner){
         attacking = true; // player is stunned
-        stars = instance_create(owner.x,owner.y - 40,obj_stars); // create stars object signifying stunned
+        stars = instance_create(x,y - 40,obj_stars); // create stars object signifying stunned
         stars.owner = other.id;
-        alarm[0] = 90; // reset stunned
-        alarm[8] = 90; // destroy stars
+        alarm[0] = 300; // reset stunned
+        alarm[8] = 300; // destroy stars
+    }
     }
     else{
         var player = instance_place(x,y,obj_player);
@@ -357,15 +394,19 @@ with(instance_create(x,y,obj_highpunch)){ // hitbox creation
           <argument>
             <kind>1</kind>
             <string>///Mid Punch Object
-with(instance_create(x,y,obj_midpunch)){ // hitbox creation
+tmp = instance_create(x,y,obj_midpunch);
+tmp.owner = id;
+with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = other.damage + other.mPunchMod;
     if(instance_place(x,y,obj_parry)){ // if punch hit parry
+        with(owner){
         attacking = true; // player is stunned
-        stars = instance_create(owner.x,owner.y - 40,obj_stars); // create stars object signifying stunned
-        stars.owner = other.id;
-        alarm[0] = 90; // reset stunned
-        alarm[8] = 90; // destroy stars
+        stars = instance_create(x,y - 400,obj_stars); // create stars object signifying stunned
+        stars.owner = id;
+        alarm[0] = 120; // reset stunned
+        alarm[8] = 120; // destroy stars
+        }
     }
     else{
         var player = instance_place(x,y,obj_player);
@@ -575,7 +616,7 @@ else{
         sprite_index = spr_parry;
         image_index = 0;
         alarm[9] = 9; // create parry obj
-        alarm[0] = attack_speed;
+        alarm[0] = 50 + attack_speed;
         alarm[6] = min(recovery, image_number);
         show_debug_message("Parry from " + string(player_num + 1));
     }
