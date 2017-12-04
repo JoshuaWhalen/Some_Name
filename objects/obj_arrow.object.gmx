@@ -55,9 +55,11 @@ else{
           <argument>
             <kind>1</kind>
             <string>///Destroy arrow with low stick input
+if(instance_exists(owner)){
 if(abs(owner.rsh) &lt; 150 &amp;&amp; abs(owner.rsv) &lt; 150){
     owner.pointing = false;
     instance_destroy();
+}
 }
 
 </string>

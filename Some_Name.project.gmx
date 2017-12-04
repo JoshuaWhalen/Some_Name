@@ -37,7 +37,6 @@
       <sprite>sprites\spr_arrow</sprite>
     </sprites>
     <sprite>sprites\spr_cursor_v2</sprite>
-<<<<<<< HEAD
     <sprites name="Character Selection">
       <sprite>sprites\spr_playbutton</sprite>
       <sprite>sprites\spr_char_aqua</sprite>
@@ -53,9 +52,7 @@
       <sprite>sprites\spr_plr1_arrow</sprite>
       <sprite>sprites\spr_plr2_arrow</sprite>
     </sprites>
-=======
     <sprite>sprites\spr_stars</sprite>
->>>>>>> 149553f4238775788176f4097ae3e5a291193eee
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
