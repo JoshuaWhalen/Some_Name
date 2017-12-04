@@ -236,7 +236,7 @@ with(instance_create(x,y,obj_lowkick)){ // hitbox creation
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_kick, 0, 0); //sound effect - kick
-                hspeed += 10 * other.image_xscale;  // give vertical movement to hit target
+                hspeed += 20 * other.image_xscale;  // give vertical movement to hit target
             }
         }
     }
@@ -267,9 +267,9 @@ with(instance_create(x,y,obj_lowkick)){ // hitbox creation
 with(instance_create(x,y,obj_midkick)){ // hitbox creation
     image_xscale = other.image_xscale;  // change hitbox to face player
     var dmg = other.damage + other.mKickMod;             // pass damage through
-    if(instance_place(owner.x,owner.y - 40,obj_parry)){ // if punch hit parry
+    if(instance_place(x,y,obj_parry)){ // if punch hit parry
         attacking = true; // player is stunned
-        stars = instance_create(x,y,obj_stars); // create stars object signifying stunned
+        stars = instance_create(owner.x,owner.y - 40,obj_stars); // create stars object signifying stunned
         stars.owner = other.id;
         alarm[0] = 90; // reset stunned
         alarm[8] = 90; // destroy stars
@@ -282,8 +282,9 @@ with(instance_create(x,y,obj_midkick)){ // hitbox creation
                 image_blend = c_white;  // hit flash
                 alarm[1] = 2;           // reset player colour
                 audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
-                hspeed += 10 * other.image_xscale; //add movement to kicked target
-                vspeed -= 10;//give vertical movement to target
+                hspeed += 20 * other.image_xscale; //add movement to kicked target
+                vspeed -= 20;//give vertical movement to target
+                grounded = false;
             }
         }    
     }
@@ -571,7 +572,7 @@ else{
     if(gamepad_button_check_pressed(player_num, gp_face4) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0);
         attacking = true;
-        aprite_index = spr_parry;
+        sprite_index = spr_parry;
         image_index = 0;
         alarm[9] = 9; // create parry obj
         alarm[0] = attack_speed;
