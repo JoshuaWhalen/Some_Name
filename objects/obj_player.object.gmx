@@ -265,7 +265,7 @@ with(id){ // hitbox creation
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_kick, 0, 0); //sound effect - kick
-                hspeed += 20 * other.image_xscale;  // give vertical movement to hit target
+                hspeed += 30 * other.image_xscale;  // give vertical movement to hit target
             }
         }
     }
@@ -315,8 +315,8 @@ with(tmp){ // hitbox creation
                 image_blend = c_white;  // hit flash
                 alarm[1] = 2;           // reset player colour
                 audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
-                hspeed += 20 * other.image_xscale; //add movement to kicked target
-                vspeed -= 20;//give vertical movement to target
+                hspeed += 30 * other.image_xscale; //add movement to kicked target
+                vspeed -= 30;//give vertical movement to target
                 grounded = false;
             }
         }    
@@ -444,9 +444,9 @@ with(tmp){ // hitbox creation
             <kind>1</kind>
             <string>///Tint Players
 if(player_num == 0)
-    image_blend = c_red;
+    image_blend = global.clr1;
 else
-    image_blend = c_blue;
+    image_blend = global.clr2;
 </string>
           </argument>
         </arguments>

@@ -31,7 +31,7 @@
 with(instance_place(x,y,obj_player)){
     vspeed = 0;
     grounded = true;
-    y = 673 + (sprite_height/2);
+    y = other.y - (sprite_height/2) - 48;
 }
 </string>
           </argument>
