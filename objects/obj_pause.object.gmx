@@ -29,11 +29,11 @@
 global.pause = 0;
 
 //Pause menu text
-menu_array[0] = "continue";
-menu_array[1] = "restart";
-menu_array[2] = "main menu";
+menu_array[0] = "CONTINUE";
+menu_array[1] = "RESTART";
+menu_array[2] = "MAIN MENU";
 
-space = 75; //Space between lines of text
+space = 100; //Space between lines of text
 mpos = 0; //Track menu position for cursor
 
 
@@ -72,9 +72,9 @@ with(obj_player){
     }                               
 }
 
-//If "start" button(or space key) is pressed while the game is not paused and you're not in the main menu, then pause
+//If "start" button(or space key) is pressed while the game is not paused and you're not in the main menu or char select screen, then pause
 if((gamepad_button_check_pressed(0, gp_start) || gamepad_button_check_pressed(1, gp_start) || keyboard_check_pressed(vk_space)) &amp;&amp; 
-    global.pause == 0 &amp;&amp; (room_get_name(room) != "rm_menu")){ 
+    global.pause == 0 &amp;&amp; (room_get_name(room) != "rm_menu") &amp;&amp; (room_get_name(room) != "rm_char_select")){ 
     
     audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "start"
     global.pause = 1;
@@ -88,9 +88,9 @@ if((gamepad_button_check_pressed(0, gp_start) || gamepad_button_check_pressed(1,
     room_speed = 7;
 }
 
-//Else if "start" button(or space key) is pressed while the game is paused and you're not in the main menu, then unpause
+//Else if "start" button(or space key) is pressed while the game is paused and you're not in the main menu or char select screen, then unpause
 else if((gamepad_button_check_pressed(0, gp_start) || gamepad_button_check_pressed(1, gp_start) || keyboard_check_pressed(vk_space)) &amp;&amp; 
-         global.pause == 1 &amp;&amp; (room_get_name(room) != "rm_menu")){
+         global.pause == 1 &amp;&amp; (room_get_name(room) != "rm_menu") &amp;&amp; (room_get_name(room) != "rm_char_select")){
     audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "start"
     global.pause = 0;
     //Set the speeds back to where you were prior to pausing
@@ -171,7 +171,11 @@ if(keyboard_check_pressed(vk_escape)){
 }
 
 
-
+//Back 
+//if you are in the character select screen and "b" on the controller is pressed, go back to main menu
+if((room_get_name(room) == "rm_char_select") &amp;&amp; gamepad_button_check(0, gp_face2)){
+    game_restart();
+}
 
 
 
@@ -207,18 +211,18 @@ if(global.pause){
     //Text configuration
     draw_set_halign(fa_left);
     draw_set_valign(fa_middle);
-    draw_set_font(font_options);
+    draw_set_font(font_bn_machine);
     draw_set_color(c_white);
     draw_set_alpha(1);
 
     //Draw pause menu text 
     var m;
     for(m = 0; m &lt; 3; m += 1){
-        draw_text(room_width/2 - 20, y +(m*space), string(menu_array[m])); 
+        draw_text(room_width/2 - 40, room_height/2 +(m*space), string(menu_array[m])); 
     }
     
     //Draw selection arrow
-    draw_sprite(sprite_index, 0, room_width/2 - 70, y + (mpos * space)); 
+    draw_sprite(sprite_index, 0, room_width/2 - 90, room_height/2 + (mpos * space)); 
 }
 
 

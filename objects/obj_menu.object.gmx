@@ -29,11 +29,15 @@
 global.pause = 0;
 
 //menu text
-menu_array[0] = "start";
-menu_array[1] = "tutorial";
-menu_array[2] = "quit";
-
-space = 75; //Space between lines of text
+menu_array[0] = "START";
+menu_array[1] = "TUTORIAL";
+menu_array[2] = "QUIT";
+/*
+menu_array[0] = spr_start;
+menu_array[1] = spr_tutorial;
+menu_array[2] = spr_quit;
+*/
+space = 100; //Space between lines of text
 mpos = 0; //Track menu position for cursor
 
 
@@ -114,6 +118,7 @@ if(keyboard_check_pressed(vk_escape)){
     game_end();
 }
 
+
 </string>
           </argument>
         </arguments>
@@ -141,17 +146,21 @@ if(keyboard_check_pressed(vk_escape)){
 //Text configuration
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-draw_set_font(font_options);
+draw_set_font(font_bn_machine);
 draw_set_color(c_white);
 
 //Draw menu text 
 var m;
-for(m = 0; m &lt; 3; m += 1){
-    draw_text(room_width/2 - 20, y +(m*space), string(menu_array[m])); 
+for(m = 0; m &lt; 3; m += 1){ 
+    draw_text(room_width/2 - 40, room_height/2 +(m*space), string(menu_array[m])); 
+    //draw_text(room_width/2 - 20, y +(m*space), string(menu_array[m])); 
+    //draw_sprite(menu_array[m], 0, room_width/2 - 100, y + (mpos * space)); 
+    
 }
 
 //Draw selection arrow
-draw_sprite(sprite_index, 0, room_width/2 - 70, y + (mpos * space)); 
+draw_sprite(sprite_index, 0, room_width/2 - 90, room_height/2 + (mpos * space)); 
+
 
 </string>
           </argument>

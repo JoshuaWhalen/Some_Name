@@ -36,8 +36,6 @@
       <sprite>sprites\spr_tracer</sprite>
       <sprite>sprites\spr_arrow</sprite>
     </sprites>
-    <sprite>sprites\spr_cursor_v2</sprite>
-<<<<<<< HEAD
     <sprites name="Character Selection">
       <sprite>sprites\spr_playbutton</sprite>
       <sprite>sprites\spr_char_aqua</sprite>
@@ -53,9 +51,15 @@
       <sprite>sprites\spr_plr1_arrow</sprite>
       <sprite>sprites\spr_plr2_arrow</sprite>
     </sprites>
-=======
     <sprite>sprites\spr_stars</sprite>
->>>>>>> 149553f4238775788176f4097ae3e5a291193eee
+    <sprites name="Menu">
+      <sprite>sprites\spr_cursor_v2</sprite>
+      <sprite>sprites\spr_quit</sprite>
+      <sprite>sprites\spr_tutorial</sprite>
+      <sprite>sprites\spr_start</sprite>
+      <sprite>sprites\spr_text_bg</sprite>
+      <sprite>sprites\spr_char_select_bg</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
@@ -69,6 +73,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_options</font>
+    <font>fonts\font_bn_machine</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_floor</object>
@@ -88,6 +93,8 @@
     <objects name="Menus">
       <object>objects\obj_menu</object>
       <object>objects\obj_pause</object>
+      <object>objects\obj_text_bg</object>
+      <object>objects\obj_char_select_bg</object>
     </objects>
     <objects name="Character Selection">
       <object>objects\obj_char_blue</object>
