@@ -58,6 +58,7 @@
       <sprite>sprites\spr_start</sprite>
       <sprite>sprites\spr_text_bg</sprite>
       <sprite>sprites\spr_char_select_bg</sprite>
+      <sprite>sprites\spr_char_select_bg2</sprite>
       <sprite>sprites\spr_cursor_v2</sprite>
     </sprites>
   </sprites>
@@ -95,6 +96,7 @@
       <object>objects\obj_pause</object>
       <object>objects\obj_text_bg</object>
       <object>objects\obj_char_select_bg</object>
+      <object>objects\obj_char_select_bg2</object>
     </objects>
     <objects name="Character Selection">
       <object>objects\obj_char_blue</object>

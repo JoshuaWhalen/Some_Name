@@ -20,6 +20,6 @@
   <width>2000</width>
   <height>1200</height>
   <frames>
-    <frame index="0">images\spr_char_select_bg_0.png</frame>
+    <frame index="0">images\spr_char_select_bg2_0.png</frame>
   </frames>
 </sprite>
