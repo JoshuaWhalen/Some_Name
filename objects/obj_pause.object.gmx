@@ -152,7 +152,7 @@ if(global.pause == 1){
                 break;
             }
             case 2:{ //player selected "main menu"
-                room_goto(rm_menu);
+                game_restart();
                 break;
             }
             default:{
