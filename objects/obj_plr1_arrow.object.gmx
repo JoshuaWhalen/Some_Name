@@ -55,12 +55,11 @@ if(gamepad_axis_value(0, gp_axislh) &lt; -0.5 || keyboard_check(ord('A'))){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
-
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
     with(instance_place(x, y, obj_char_blue)){
     
         if(obj_plr2_select.image_blend != c_blue){
-        
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -75,12 +74,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
     with(instance_place(x, y, obj_char_aqua)){
     
         if(obj_plr2_select.image_blend != c_aqua){
-            
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -95,12 +94,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
     with(instance_place(x, y, obj_char_fuchsia)){
     
         if(obj_plr2_select.image_blend != c_fuchsia){
-        
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -115,12 +114,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
     with(instance_place(x, y, obj_char_green)){
     
         if(obj_plr2_select.image_blend != c_green){
-        
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -135,12 +134,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
     with(instance_place(x, y, obj_char_lime)){
     
         if(obj_plr2_select.image_blend != c_lime){
-            
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -155,12 +154,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
     with(instance_place(x, y, obj_char_orange)){
     
         if(obj_plr2_select.image_blend != c_orange){
-        
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -175,12 +174,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
     with(instance_place(x, y, obj_char_purple)){
     
         if(obj_plr2_select.image_blend != c_purple){
-        
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -195,12 +194,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
     with(instance_place(x, y, obj_char_red)){
     
         if(obj_plr2_select.image_blend != c_red){
-        
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -215,12 +214,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
     with(instance_place(x, y, obj_char_white)){
-    
-          if(obj_plr2_select.image_blend != c_silver){  
         
+          if(obj_plr2_select.image_blend != c_silver){  
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -235,12 +234,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
     with(instance_place(x, y, obj_char_yellow)){
     
         if(obj_plr2_select.image_blend != c_yellow){
-        
+            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over this option
             with(global.player1Char){
         
                 sprite_index = spr_idle;
@@ -255,12 +254,12 @@ if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
 
 }
 
-if(gamepad_button_check(0, gp_face1) || keyboard_check_pressed(vk_enter)){
-
+if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){
+    
     with(instance_place(x, y, obj_playbutton)){
     
         if(obj_plr1_select.sprite_index = spr_idle &amp;&amp; obj_plr2_select.sprite_index = spr_idle){
-          
+           audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over "PLAY!" option
            room_goto(rm_arena) 
     
         }    
