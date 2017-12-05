@@ -36,10 +36,6 @@
       <sprite>sprites\spr_tracer</sprite>
       <sprite>sprites\spr_arrow</sprite>
     </sprites>
-HEAD
-=======
-    <sprite>sprites\spr_cursor_v2</sprite>
->>>>>>> df3f7f7762c205a3205f0d27568a23b513e0a90e
     <sprites name="Character Selection">
       <sprite>sprites\spr_playbutton</sprite>
       <sprite>sprites\spr_char_aqua</sprite>
@@ -56,17 +52,14 @@ HEAD
       <sprite>sprites\spr_plr2_arrow</sprite>
     </sprites>
     <sprite>sprites\spr_stars</sprite>
-HEAD
     <sprites name="Menu">
-      <sprite>sprites\spr_cursor_v2</sprite>
       <sprite>sprites\spr_quit</sprite>
       <sprite>sprites\spr_tutorial</sprite>
       <sprite>sprites\spr_start</sprite>
       <sprite>sprites\spr_text_bg</sprite>
       <sprite>sprites\spr_char_select_bg</sprite>
+      <sprite>sprites\spr_cursor_v2</sprite>
     </sprites>
-=======
->>>>>>> df3f7f7762c205a3205f0d27568a23b513e0a90e
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
