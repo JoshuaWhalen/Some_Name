@@ -10,6 +10,7 @@
     <sound>sound\snd_kick</sound>
     <sound>sound\snd_punch</sound>
     <sound>sound\snd_select</sound>
+    <sound>sound\snd_music</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_floor</sprite>
@@ -112,7 +113,6 @@
       <object>objects\obj_text_bg</object>
       <object>objects\obj_char_select_bg</object>
       <object>objects\obj_char_select_bg2</object>
-      <object>objects\obj_count</object>
     </objects>
     <objects name="Character Selection">
       <object>objects\obj_char_blue</object>
@@ -141,6 +141,13 @@
     <object>objects\obj_p1_check</object>
     <object>objects\obj_p2_check</object>
     <object>objects\obj_tutorial_done</object>
+    <objects name="Countdown">
+      <object>objects\obj_fight</object>
+      <object>objects\obj_count</object>
+      <object>objects\obj_3</object>
+      <object>objects\obj_2</object>
+      <object>objects\obj_1</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
