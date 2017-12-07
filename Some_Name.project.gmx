@@ -61,12 +61,10 @@
       <sprite>sprites\spr_char_select_bg2</sprite>
       <sprite>sprites\spr_cursor_v2</sprite>
     </sprites>
-    <sprites name="Countdown">
-      <sprite>sprites\spr_3</sprite>
-      <sprite>sprites\spr_2</sprite>
-      <sprite>sprites\spr_1</sprite>
-      <sprite>sprites\spr_fight</sprite>
-    </sprites>
+    <sprite>sprites\spr_control</sprite>
+    <sprite>sprites\spr_A</sprite>
+    <sprite>sprites\spr_check_mark</sprite>
+    <sprite>sprites\spr_instrc</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
@@ -77,6 +75,7 @@
   <scripts name="scripts">
     <script>scripts\setStats.gml</script>
     <script>scripts\setExDamage.gml</script>
+    <script>scripts\textDraw.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_options</font>
@@ -103,7 +102,6 @@
       <object>objects\obj_text_bg</object>
       <object>objects\obj_char_select_bg</object>
       <object>objects\obj_char_select_bg2</object>
-      <object>objects\obj_count</object>
     </objects>
     <objects name="Character Selection">
       <object>objects\obj_char_blue</object>
@@ -123,10 +121,23 @@
       <object>objects\obj_plr2_arrow</object>
       <object>objects\obj_inviso</object>
     </objects>
+    <object>objects\obj_control</object>
+    <object>objects\obj_text</object>
+    <object>objects\obj_player_tutorial</object>
+    <object>objects\obj_t_hook</object>
+    <object>objects\obj_next</object>
+    <object>objects\obj_instrc</object>
+    <object>objects\obj_p1_check</object>
+    <object>objects\obj_p2_check</object>
+    <object>objects\obj_tutorial_done</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
+    <room>rooms\rm_controls</room>
     <room>rooms\rm_arena</room>
+    <room>rooms\rm_tutorial</room>
+    <room>rooms\rm_tutorial_intro</room>
+    <room>rooms\rm_tutorial_out</room>
     <room>rooms\rm_char_select</room>
   </rooms>
   <help>

@@ -42,8 +42,7 @@ shot = false;
 stunned = false;
 
 //additional objects
-healthbar = instance_create(x, y - (sprite_height/2) - 10, obj_healthbar);
-healthbar.owner = id;
+
 pointer = instance_create(x, y, obj_tracer);
 pointer.owner = id;
 arrrow = 0;
@@ -70,7 +69,7 @@ stars = 0;
             <kind>1</kind>
             <string>///Player variables
 //These are just default values for current game state compatibility
-damage = 5;         //Amount of damage player deals
+damage = 0;         //Amount of damage player deals
 max_speed = 15;     //Maximum horizontal speed of player
 max_hit = 100;      //Maximum hit points
 gravy = 4;          //Yes, I called the gravity modifier gravy
@@ -168,6 +167,18 @@ with(instance_create(x, y, obj_parry)){
             <kind>1</kind>
             <string>///Destroy stars
 with(stars){
+    if(player_num == 0){ //p1 parried
+        if(obj_tutorial_done.p2_parry == false){
+            instance_create( 1764, 480, obj_p2_check);
+        }
+        obj_tutorial_done.p2_parry = true;
+    }
+    else{
+        if(obj_tutorial_done.p1_parry == false){
+            instance_create( 1664, 480, obj_p1_check);
+        }
+        obj_tutorial_done.p1_parry = true;  
+    }
     instance_destroy();
 }
 stars = 0;
@@ -247,7 +258,7 @@ tmp = instance_create(x,y,obj_lowkick);
 tmp.owner = id;
 with(id){ // hitbox creation
     image_xscale = other.image_xscale;
-    var dmg = other.damage + other.lKickMod;
+    var dmg = 0;
     if(place_meeting(x,y,obj_parry)){ // if punch hit parry
         with(owner){
         attacking = true; // player is stunned
@@ -258,10 +269,22 @@ with(id){ // hitbox creation
         }
     }
     else{
-        var player = instance_place(x,y,obj_player);
+        var player = instance_place(x,y,obj_player_tutorial);
         if(player != other.id){
-            with(instance_place(x,y,obj_player)){ // with another player
+            with(instance_place(x,y,obj_player_tutorial)){ // with another player
                 hit -= dmg;
+                if(player_num == 0){ //p1 low kick
+                    if(obj_tutorial_done.p2_low == false){
+                        instance_create( 1824, 400, obj_p2_check);
+                    }
+                    obj_tutorial_done.p2_low = true;
+                }
+                else{ //player 2 low kick
+                    if(obj_tutorial_done.p1_low == false){
+                        instance_create( 1728, 400, obj_p1_check);
+                    }
+                    obj_tutorial_done.p1_low = true;
+                }
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_kick, 0, 0); //sound effect - kick
@@ -297,7 +320,7 @@ tmp = instance_create(x,y,obj_midkick);
 tmp.owner = id;
 with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;  // change hitbox to face player
-    var dmg = other.damage + other.mKickMod;             // pass damage through
+    var dmg = 0;             // pass damage through
     if(place_meeting(x,y,obj_parry)){ // if punch hit parry
         with(owner){
         attacking = true; // player is stunned
@@ -308,10 +331,24 @@ with(tmp){ // hitbox creation
     }
     }
     else{
-        var player = instance_place(x,y,obj_player);
+        var player = instance_place(x,y,obj_player_tutorial);
         if(player != other.id){
-            with(instance_place(x,y,obj_player)){ // with another player
-                hit -= dmg;                     // damage from attacking fighter hitting recieving fighter
+            with(instance_place(x,y,obj_player_tutorial)){ // with another player
+                hit -= dmg; 
+                if(player_num == 0){ //p1 mid
+                    if(obj_tutorial_done.p2_mid == false){
+                        instance_create( 1728, 325, obj_p2_check);
+                    }
+                    obj_tutorial_done.p2_mid = true;
+                }
+                else{
+                    if(obj_tutorial_done.p1_mid == false){
+                        instance_create( 1728, 325, obj_p1_check);
+                    }
+                    obj_tutorial_done.p1_mid = true;
+                    
+                }                   
+                // damage from attacking fighter hitting recieving fighter
                 image_blend = c_white;  // hit flash
                 alarm[1] = 2;           // reset player colour
                 audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
@@ -349,7 +386,7 @@ tmp = instance_create(x,y,obj_highpunch);
 tmp.owner = id;
 with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;
-    var dmg = other.damage + other.hPunchMod;
+    var dmg = 0;
     if(place_meeting(x,y,obj_parry)){ // if punch hit parry
     with(owner){
         attacking = true; // player is stunned
@@ -360,10 +397,23 @@ with(tmp){ // hitbox creation
     }
     }
     else{
-        var player = instance_place(x,y,obj_player);
+        var player = instance_place(x,y,obj_player_tutorial);
         if(player != other.id){
-            with(instance_place(x,y,obj_player)){ // with another player
+            with(instance_place(x,y,obj_player_tutorial)){ // with another player
                 hit -= dmg * 2;
+                if(player_num == 0){ //p1 upper
+                    if(obj_tutorial_done.p2_upper == false){
+                        instance_create( 1892, 246, obj_p2_check);
+                    }
+                    obj_tutorial_done.p2_upper = true;
+                }
+                else{
+                    if(obj_tutorial_done.p1_upper == false){
+                        instance_create( 1792, 246, obj_p1_check);
+                    }
+                    obj_tutorial_done.p1_upper = true;
+                    
+                }
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_punch, 0, 0); //sound effect - punch
@@ -398,7 +448,7 @@ tmp = instance_create(x,y,obj_midpunch);
 tmp.owner = id;
 with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;
-    var dmg = other.damage + other.mPunchMod;
+    var dmg = 0;
     if(place_meeting(x,y,obj_parry)){ // if punch hit parry
         with(owner){
         attacking = true; // player is stunned
@@ -409,10 +459,22 @@ with(tmp){ // hitbox creation
         }
     }
     else{
-        var player = instance_place(x,y,obj_player);
+        var player = instance_place(x,y,obj_player_tutorial);
         if(player != other.id){
             with(player){ // with another player
                 hit -= dmg;
+                if(player_num == 0){ //p1 parried
+                    if(obj_tutorial_done.p2_punch == false){
+                        instance_create( 1988, 170, obj_p2_check);
+                    }
+                    obj_tutorial_done.p2_punch = true;
+                }
+                else{
+                    if(obj_tutorial_done.p1_punch == false){
+                        instance_create( 1888, 170, obj_p1_check);
+                    }
+                    obj_tutorial_done.p1_punch = true;
+                }
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_punch, 0, 0); //sound effect - punch
@@ -444,9 +506,9 @@ with(tmp){ // hitbox creation
             <kind>1</kind>
             <string>///Tint Players
 if(player_num == 0)
-    image_blend = global.clr1;
+    image_blend = c_red;
 else
-    image_blend = global.clr2;
+    image_blend = c_blue;
 </string>
           </argument>
         </arguments>
@@ -552,7 +614,7 @@ if(pointing){ // arrow exists
     if(gamepad_button_check_pressed(player_num, gp_shoulderr) &amp;&amp; !shot){ // grapple is ready and Right bumper
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         shot = true; // is shot
-        hook = instance_create(x,y, obj_hook); //create hook
+        hook = instance_create(x,y, obj_t_hook); //create hook
         hook.owner = id; //set owner ID
         with(hook){ //with hook
             image_speed = 2;
@@ -726,7 +788,7 @@ if((h_move != 0) || (v_move != 0) &amp;&amp; !attacking){
 if(hspeed != 0 &amp;&amp; !attacking){
     if (image_xscale == 1){ // if the sprite is facing right
         if (h_move &gt; 0){    // if the sprite is moving right
-            if(!place_meeting(x + 50,y,obj_player)){ // checking for player collision
+            if(!place_meeting(x + 50,y,obj_player_tutorial)){ // checking for player collision
                 sprite_index = spr_move;
             }
             else{
@@ -739,7 +801,7 @@ if(hspeed != 0 &amp;&amp; !attacking){
     }
     else{                   // if the sprite is facing left
         if(h_move &lt; 0){     // if the sprite is moving left
-            if(!place_meeting(x - 50,y,obj_player)){ // checking for player collision
+            if(!place_meeting(x - 50,y,obj_player_tutorial)){ // checking for player collision
                 sprite_index = spr_move;
             }
             else{
