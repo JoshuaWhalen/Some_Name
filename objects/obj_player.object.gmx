@@ -99,30 +99,6 @@ lKickMod = 0;       //Additional low kick damage
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Reset Stunned
-stunned = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="9">
       <action>
         <libid>1</libid>
@@ -245,7 +221,7 @@ image_speed = 1;
             <string>///Low Kick Object
 tmp = instance_create(x,y,obj_lowkick);
 tmp.owner = id;
-with(id){ // hitbox creation
+with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = other.damage + other.lKickMod;
     if(place_meeting(x,y,obj_parry)){ // if punch hit parry
@@ -693,7 +669,7 @@ if(global.pause){ //If paused then stop running the script
 
 //Movement 
 //Supposed to prevent player from going outside of the screen
-x = clamp(x, sprite_width/2, room_width - (sprite_width/2));
+x = clamp(x, sprite_width/2, room_width - sprite_width);
 y = clamp(y, sprite_height/2, room_height - (sprite_height/2));
 
 //switching movement control to other player
