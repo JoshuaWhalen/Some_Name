@@ -41,8 +41,6 @@ space = 100; //Space between lines of text
 mpos = 0; //Track menu position for cursor
 
 
-
-
 </string>
           </argument>
         </arguments>

@@ -7,8 +7,8 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>24</bbox_left>
-  <bbox_right>72</bbox_right>
+  <bbox_left>28</bbox_left>
+  <bbox_right>271</bbox_right>
   <bbox_top>16</bbox_top>
   <bbox_bottom>85</bbox_bottom>
   <HTile>0</HTile>
@@ -17,9 +17,9 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>100</width>
+  <width>300</width>
   <height>100</height>
   <frames>
-    <frame index="0">images\spr_2_0.png</frame>
+    <frame index="0">images\spr_fight_0.png</frame>
   </frames>
 </sprite>

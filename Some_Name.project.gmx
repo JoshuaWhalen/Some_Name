@@ -61,6 +61,12 @@
       <sprite>sprites\spr_char_select_bg2</sprite>
       <sprite>sprites\spr_cursor_v2</sprite>
     </sprites>
+    <sprites name="Countdown">
+      <sprite>sprites\spr_3</sprite>
+      <sprite>sprites\spr_2</sprite>
+      <sprite>sprites\spr_1</sprite>
+      <sprite>sprites\spr_fight</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
@@ -97,6 +103,7 @@
       <object>objects\obj_text_bg</object>
       <object>objects\obj_char_select_bg</object>
       <object>objects\obj_char_select_bg2</object>
+      <object>objects\obj_count</object>
     </objects>
     <objects name="Character Selection">
       <object>objects\obj_char_blue</object>
