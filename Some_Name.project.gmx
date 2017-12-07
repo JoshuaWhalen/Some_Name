@@ -61,6 +61,12 @@
       <sprite>sprites\spr_char_select_bg2</sprite>
       <sprite>sprites\spr_cursor_v2</sprite>
     </sprites>
+    <sprites name="Countdown">
+      <sprite>sprites\spr_3</sprite>
+      <sprite>sprites\spr_2</sprite>
+      <sprite>sprites\spr_1</sprite>
+      <sprite>sprites\spr_fight</sprite>
+    </sprites>
     <sprite>sprites\spr_control</sprite>
     <sprite>sprites\spr_A</sprite>
     <sprite>sprites\spr_check_mark</sprite>
@@ -76,6 +82,10 @@
     <script>scripts\setStats.gml</script>
     <script>scripts\setExDamage.gml</script>
     <script>scripts\textDraw.gml</script>
+    <script>scripts\scr_getInputs.gml</script>
+    <script>scripts\scr_menu.gml</script>
+    <script>scripts\scr_movement.gml</script>
+    <script>scripts\scr_pause.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_options</font>
@@ -102,6 +112,7 @@
       <object>objects\obj_text_bg</object>
       <object>objects\obj_char_select_bg</object>
       <object>objects\obj_char_select_bg2</object>
+      <object>objects\obj_count</object>
     </objects>
     <objects name="Character Selection">
       <object>objects\obj_char_blue</object>
