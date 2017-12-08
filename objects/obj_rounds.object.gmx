@@ -28,6 +28,8 @@
             <string>global.rounds = instance_create(room_width/2, room_height/5.5, obj_round1); 
 global.p1_wins = 0;
 global.p2_wins = 0;
+global.p1_medals = 0;
+global.p2_medals = 0;
 global.round_num = 1;
 //global.round_status = 1;
 </string>
@@ -52,57 +54,80 @@ global.round_num = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.round_status == 0 &amp;&amp; global.round_num == 1){
+            <string>//Action for rounds
+
+//Round 2
+if(global.round_status == 0 &amp;&amp; global.round_num == 1){
     instance_destroy(obj_round1);
     instance_create(room_width/2, room_height/5.5, obj_round2);
     room_goto(rm_arena);
-    global.round_num += 1;
-    if(global.p1_wins == 1){
-        with(obj_medal_slot1){
+    global.round_num += 1;  
+    
+    //Award medals from round 1
+    if(global.p1_wins == 1){ //If player 1 won for the first time(in round 1)
+        with(instance_create(96, 160, obj_medal)) //Give player 1 a medal in slot 1
             image_blend = global.clr1;
-        }
-        object_set_visible(obj_loss_medal4, true);
+        global.p1_medals += 1;
+        instance_create(2464, 160, obj_loss_medal); //Shame Slot 4 
     }
-    else if(global.p2_wins == 1){
-        with(obj_medal_slot4){
+    if(global.p2_wins == 1){ //If player 2 won for the first time (in round 1)
+        with(instance_create(2464, 160, obj_medal)) //Give player 2 a medal in slot 4
             image_blend = global.clr2;
-        }
-        object_set_visible(obj_loss_medal1, true);
-    }        
+        global.p2_medals += 1;
+        instance_create(96, 160, obj_loss_medal); //Shame Slot 1
+    }  
 }
-else if(global.round_status == 0 &amp;&amp; global.round_num == 2){
+
+//Round 3
+else if(global.round_status == 0 &amp;&amp; global.round_num == 2){  
     instance_destroy(obj_round2);
     instance_create(room_width/2, room_height/5.5, obj_round3);
     room_goto(rm_arena);
     global.round_num += 1;
     
-    if(global.p1_wins == 2){
-        object_set_visible(obj_loss_medal5, true);
-        with(obj_medal_slot2)
+    //Award medals from round 2
+    if((global.p1_wins == 1 &amp;&amp; global.p1_medals == 0) || global.p1_wins == 2){ //If player 1 won in round 2
+        with(instance_create(192, 160, obj_medal)) //Give player 1 a medal in slot 2
             image_blend = global.clr1;
+        global.p1_medals += 1;
+        instance_create(2560, 160, obj_loss_medal); //Shame Slot 5        
     }
-    else if(global.p2_wins == 2){
-        object_set_visible(obj_loss_medal2, true);
-        with(obj_medal_slot5)
+    else if((global.p2_wins == 1 &amp;&amp; global.p2_medals == 0) || global.p2_wins == 2){ //If player 2 won in round 2
+        with(instance_create(2560, 160, obj_medal)) //Give player 2 a medal in slot 5
             image_blend = global.clr2;
-    }  
-    
+        global.p2_medals += 1;
+        instance_create(192, 160, obj_loss_medal); //Shame Slot 2
+    } 
 }
-if(global.round_status == 0 &amp;&amp; global.round_num == 3){
-    if(global.p1_wins == 3){
-        object_set_visible(obj_loss_medal6, true);
-        with(obj_medal_slot3)
+
+//In the last round
+else if(global.round_status == 0 &amp;&amp; global.round_num == 3){
+    //Award medals from round 3
+    if((global.p1_wins == 1 &amp;&amp; global.p1_medals == 0) || (global.p1_wins == 2 &amp;&amp; global.p1_medals == 1) || global.p1_wins == 3){ //If player 1 won in round 3
+        with(instance_create(288, 160, obj_medal)) //Give player 1 a medal in slot 3
             image_blend = global.clr1;
+        global.p1_medals += 1;
+        instance_create(2656, 160, obj_loss_medal); //Shame slot 6       
     }
-    else if(global.p2_wins == 3){
-        object_set_visible(obj_loss_medal3, true);
-        with(obj_medal_slot6)
+    else if((global.p2_wins == 1 &amp;&amp; global.p2_medals == 0) || (global.p2_wins == 2 &amp;&amp; global.p2_medals == 1) || global.p2_wins == 3){ //If player 2 won in round 3
+        with(instance_create(2656, 160, obj_medal)) //Give player 2 a medal in slot 6
             image_blend = global.clr2;
-    }  
+        global.p2_medals += 1;
+        instance_create(288, 160, obj_loss_medal); //Shame Slot 3
+    } 
     //Put winner code here 
-   // instance_create(room_width/2, room_height/5.5, obj_round3);
-    
 }
+  
+
+ 
+  
+   
+   
+   
+    
+    
+
+
 </string>
           </argument>
         </arguments>

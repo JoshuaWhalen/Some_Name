@@ -77,6 +77,7 @@
       <sprite>sprites\spr_round2</sprite>
       <sprite>sprites\spr_round3</sprite>
       <sprite>sprites\spr_medal_slot</sprite>
+      <sprite>sprites\spr_medal</sprite>
       <sprite>sprites\spr_loss_medal</sprite>
       <sprite>sprites\spr_winner</sprite>
     </sprites>
@@ -164,18 +165,14 @@
       <object>objects\obj_rounds</object>
       <object>objects\obj_p1</object>
       <object>objects\obj_p2</object>
-      <object>objects\obj_loss_medal1</object>
-      <object>objects\obj_loss_medal2</object>
-      <object>objects\obj_loss_medal3</object>
-      <object>objects\obj_loss_medal4</object>
-      <object>objects\obj_loss_medal5</object>
-      <object>objects\obj_loss_medal6</object>
+      <object>objects\obj_loss_medal</object>
       <object>objects\obj_medal_slot1</object>
       <object>objects\obj_medal_slot2</object>
       <object>objects\obj_medal_slot3</object>
       <object>objects\obj_medal_slot4</object>
       <object>objects\obj_medal_slot5</object>
       <object>objects\obj_medal_slot6</object>
+      <object>objects\obj_medal</object>
     </objects>
   </objects>
   <rooms name="rooms">
