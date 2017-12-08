@@ -72,11 +72,20 @@
     <sprite>sprites\spr_A</sprite>
     <sprite>sprites\spr_check_mark</sprite>
     <sprite>sprites\spr_instrc</sprite>
+    <sprites name="Rounds">
+      <sprite>sprites\spr_round1</sprite>
+      <sprite>sprites\spr_round2</sprite>
+      <sprite>sprites\spr_round3</sprite>
+      <sprite>sprites\spr_medal</sprite>
+      <sprite>sprites\spr_grey_medal</sprite>
+      <sprite>sprites\spr_winner</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
     <background>background\bg_rockwall</background>
     <background>background\bg_temp</background>
+    <background>background\bg_temp2</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -147,6 +156,21 @@
       <object>objects\obj_3</object>
       <object>objects\obj_2</object>
       <object>objects\obj_1</object>
+    </objects>
+    <objects name="Rounds">
+      <object>objects\obj_round1</object>
+      <object>objects\obj_round2</object>
+      <object>objects\obj_round3</object>
+      <object>objects\obj_medal</object>
+      <object>objects\obj_rounds</object>
+      <object>objects\obj_p1</object>
+      <object>objects\obj_p2</object>
+      <object>objects\obj_p1_medal1</object>
+      <object>objects\obj_p1_medal2</object>
+      <object>objects\obj_p1_medal3</object>
+      <object>objects\obj_p2_medal1</object>
+      <object>objects\obj_p2_medal2</object>
+      <object>objects\obj_p2_medal3</object>
     </objects>
   </objects>
   <rooms name="rooms">
