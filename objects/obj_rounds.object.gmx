@@ -57,19 +57,48 @@ global.round_num = 1;
     instance_create(room_width/2, room_height/5.5, obj_round2);
     room_goto(rm_arena);
     global.round_num += 1;
-    
-    if(global.p1_wins &gt; global.p2_wins){
-    
-        show_debug_message("PLAYER ONE WINS");
+    if(global.p1_wins == 1){
+        with(obj_medal_slot1){
+            image_blend = global.clr1;
+        }
+        object_set_visible(obj_loss_medal4, true);
     }
+    else if(global.p2_wins == 1){
+        with(obj_medal_slot4){
+            image_blend = global.clr2;
+        }
+        object_set_visible(obj_loss_medal1, true);
+    }        
 }
 else if(global.round_status == 0 &amp;&amp; global.round_num == 2){
     instance_destroy(obj_round2);
     instance_create(room_width/2, room_height/5.5, obj_round3);
     room_goto(rm_arena);
     global.round_num += 1;
+    
+    if(global.p1_wins == 2){
+        object_set_visible(obj_loss_medal5, true);
+        with(obj_medal_slot2)
+            image_blend = global.clr1;
+    }
+    else if(global.p2_wins == 2){
+        object_set_visible(obj_loss_medal2, true);
+        with(obj_medal_slot5)
+            image_blend = global.clr2;
+    }  
+    
 }
 if(global.round_status == 0 &amp;&amp; global.round_num == 3){
+    if(global.p1_wins == 3){
+        object_set_visible(obj_loss_medal6, true);
+        with(obj_medal_slot3)
+            image_blend = global.clr1;
+    }
+    else if(global.p2_wins == 3){
+        object_set_visible(obj_loss_medal3, true);
+        with(obj_medal_slot6)
+            image_blend = global.clr2;
+    }  
     //Put winner code here 
    // instance_create(room_width/2, room_height/5.5, obj_round3);
     
