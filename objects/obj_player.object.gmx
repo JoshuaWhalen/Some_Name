@@ -194,8 +194,10 @@ shot = false;
           <argument>
             <kind>1</kind>
             <string>///End walking cycle
-sprite_index = spr_idle;
-image_speed = 1;
+if(global.pause == 0){
+    sprite_index = spr_idle;
+    image_speed = 1;
+}
 </string>
           </argument>
         </arguments>
@@ -654,7 +656,7 @@ else{
     }
 
     // High Punch
-    if((gamepad_button_check_pressed(player_num, gp_shoulderr)  || keyboard_check_pressed(vk_up)) &amp;&amp; !attacking){
+    if((gamepad_button_check_pressed(player_num, gp_shoulderr)  || (player_num == 1 &amp;&amp; keyboard_check_pressed(vk_up))) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         attacking = true;
         sprite_index = spr_highpunch;

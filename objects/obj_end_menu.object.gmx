@@ -25,18 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//initialize global variable pause at room initialization
-global.pause = 0;
+            <string>//Initialize global variable for pause
+//global.pause = 0;
 
-//menu text
-menu_array[0] = "START";
-menu_array[1] = "TUTORIAL";
-menu_array[2] = "QUIT";
+//Final menu text
+end_array[0] = "REMATCH";
+end_array[1] = "CHARACTER SELECT";
+end_array[2] = "MAIN MENU";
+end_array[3] = "QUIT";
 
 space = 100; //Space between lines of text
 mpos = 0; //Track menu position for cursor
-
-
 </string>
           </argument>
         </arguments>
@@ -59,7 +58,7 @@ mpos = 0; //Track menu position for cursor
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Menu
+            <string>//End Menu
 
 //Scrolling through the menu
 var move = 0;
@@ -71,9 +70,9 @@ move += max(gamepad_axis_value(0, gp_axislv) &gt; 0.5, gamepad_button_check(0, g
 //Wrap around the menu options. Prevent scrolling out of bounds of the menu. 
 mpos += move; //mpos is the position of the cursor(arrow)
 if(mpos &lt; 0){ //0 is the first index of the menu_array
-    mpos = 2; //2 is the last index of the menu_array
+    mpos = 3; //2 is the last index of the menu_array
 }
-if(mpos &gt; 2){
+if(mpos &gt; 3){
     mpos = 0;
 }
 
@@ -86,15 +85,19 @@ if(move != 0){
 if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)){ 
     audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" in the menu
     switch(mpos){ 
-        case 0:{ //player selected "start"
-            room_goto(rm_char_select);
+        case 0:{ //player selected "rematch"
+            room_goto(rm_arena);
             break;
         }
-        case 1:{ //player selected "tutorial"
-            room_goto(rm_tutorial_intro); 
+        case 1:{ //player selected "character select"
+            room_goto(rm_char_select); 
             break;
         }
-        case 2:{ // player selected "quit"
+        case 2:{ // player selected "main menu"
+            room_goto(rm_menu);
+            break;
+        }
+        case 3:{ // player selected "quit"
             game_end();
             break;
         }
@@ -135,7 +138,7 @@ if(keyboard_check_pressed(vk_escape)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//To add the text to the menu
+            <string>//To add the text to the end menu
 
 //Text configuration
 draw_set_halign(fa_left);
@@ -144,16 +147,16 @@ draw_set_font(font_bn_machine);
 draw_set_color(c_white);
 
 //Draw menu text 
-var m;
-for(m = 0; m &lt; 3; m += 1){ 
-    draw_text(room_width/2 - 40, room_height/2 +(m*space), string(menu_array[m])); 
+
+for(var m = 0; m &lt; 4; m += 1){ 
+    draw_text(room_width/2 - 240, room_height/2 +(m*space), string(end_array[m])); 
     //draw_text(room_width/2 - 20, y +(m*space), string(menu_array[m])); 
     //draw_sprite(menu_array[m], 0, room_width/2 - 100, y + (mpos * space)); 
     
 }
 
 //Draw selection arrow
-draw_sprite(sprite_index, 0, room_width/2 - 90, room_height/2 + (mpos * space)); 
+draw_sprite(sprite_index, 0, room_width/2 - 290, room_height/2 + (mpos * space)); 
 
 
 </string>

@@ -68,10 +68,6 @@
       <sprite>sprites\spr_1</sprite>
       <sprite>sprites\spr_fight</sprite>
     </sprites>
-    <sprite>sprites\spr_control</sprite>
-    <sprite>sprites\spr_A</sprite>
-    <sprite>sprites\spr_check_mark</sprite>
-    <sprite>sprites\spr_instrc</sprite>
     <sprites name="Rounds">
       <sprite>sprites\spr_round1</sprite>
       <sprite>sprites\spr_round2</sprite>
@@ -80,6 +76,17 @@
       <sprite>sprites\spr_medal</sprite>
       <sprite>sprites\spr_loss_medal</sprite>
       <sprite>sprites\spr_winner</sprite>
+    </sprites>
+    <sprites name="Winner">
+      <sprite>sprites\spr_wreath</sprite>
+      <sprite>sprites\spr_wreath_lg</sprite>
+      <sprite>sprites\spr_win_stars</sprite>
+    </sprites>
+    <sprites name="Tutorial">
+      <sprite>sprites\spr_check_mark</sprite>
+      <sprite>sprites\spr_A</sprite>
+      <sprite>sprites\spr_instrc</sprite>
+      <sprite>sprites\spr_control</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -123,6 +130,7 @@
       <object>objects\obj_text_bg</object>
       <object>objects\obj_char_select_bg</object>
       <object>objects\obj_char_select_bg2</object>
+      <object>objects\obj_end_menu</object>
     </objects>
     <objects name="Character Selection">
       <object>objects\obj_char_blue</object>
@@ -142,15 +150,6 @@
       <object>objects\obj_plr2_arrow</object>
       <object>objects\obj_inviso</object>
     </objects>
-    <object>objects\obj_control</object>
-    <object>objects\obj_text</object>
-    <object>objects\obj_player_tutorial</object>
-    <object>objects\obj_t_hook</object>
-    <object>objects\obj_next</object>
-    <object>objects\obj_instrc</object>
-    <object>objects\obj_p1_check</object>
-    <object>objects\obj_p2_check</object>
-    <object>objects\obj_tutorial_done</object>
     <objects name="Countdown">
       <object>objects\obj_fight</object>
       <object>objects\obj_count</object>
@@ -166,19 +165,32 @@
       <object>objects\obj_p1</object>
       <object>objects\obj_p2</object>
       <object>objects\obj_loss_medal</object>
-      <object>objects\obj_medal_slot1</object>
-      <object>objects\obj_medal_slot2</object>
-      <object>objects\obj_medal_slot3</object>
-      <object>objects\obj_medal_slot4</object>
-      <object>objects\obj_medal_slot5</object>
-      <object>objects\obj_medal_slot6</object>
+      <object>objects\obj_medal_slot</object>
       <object>objects\obj_medal</object>
+    </objects>
+    <objects name="Winner">
+      <object>objects\obj_wreath</object>
+      <object>objects\object64</object>
+      <object>objects\obj_wreath_lg</object>
+    </objects>
+    <objects name="Tutorial">
+      <object>objects\obj_control</object>
+      <object>objects\obj_text</object>
+      <object>objects\obj_p1_check</object>
+      <object>objects\obj_player_tutorial</object>
+      <object>objects\obj_t_hook</object>
+      <object>objects\obj_next</object>
+      <object>objects\obj_instrc</object>
+      <object>objects\obj_p2_check</object>
+      <object>objects\obj_tutorial_done</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
     <room>rooms\rm_controls</room>
     <room>rooms\rm_arena</room>
+    <room>rooms\rm_win</room>
+    <room>rooms\rm_end_menu</room>
     <room>rooms\rm_tutorial</room>
     <room>rooms\rm_tutorial_intro</room>
     <room>rooms\rm_tutorial_out</room>
