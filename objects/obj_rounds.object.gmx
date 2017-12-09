@@ -138,8 +138,8 @@ else if(global.round_status == 0 &amp;&amp; global.round_num == 3){
         global.p2_medals += 1;
         instance_create(288, 160, obj_loss_medal); //Shame Slot 3
     } 
-    instance_create(room_width/2, room_height/3, obj_wreath_lg);
     
+    //instance_create(room_width/2, room_height/3, obj_wreath);
     instance_destroy(obj_round3);
     instance_destroy();
     room_goto(rm_win);

@@ -78,9 +78,9 @@
       <sprite>sprites\spr_winner</sprite>
     </sprites>
     <sprites name="Winner">
-      <sprite>sprites\spr_wreath</sprite>
       <sprite>sprites\spr_wreath_lg</sprite>
-      <sprite>sprites\spr_win_stars</sprite>
+      <sprite>sprites\spr_wreath</sprite>
+      <sprite>sprites\spr_winning_p</sprite>
     </sprites>
     <sprites name="Tutorial">
       <sprite>sprites\spr_check_mark</sprite>
@@ -88,12 +88,14 @@
       <sprite>sprites\spr_instrc</sprite>
       <sprite>sprites\spr_control</sprite>
     </sprites>
+    <sprite>sprites\spr_bubble</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
     <background>background\bg_rockwall</background>
     <background>background\bg_temp</background>
     <background>background\bg_temp2</background>
+    <background>background\background4</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -169,9 +171,9 @@
       <object>objects\obj_medal</object>
     </objects>
     <objects name="Winner">
-      <object>objects\obj_wreath</object>
       <object>objects\object64</object>
-      <object>objects\obj_wreath_lg</object>
+      <object>objects\obj_wreath</object>
+      <object>objects\obj_winning_p</object>
     </objects>
     <objects name="Tutorial">
       <object>objects\obj_control</object>
@@ -184,17 +186,19 @@
       <object>objects\obj_p2_check</object>
       <object>objects\obj_tutorial_done</object>
     </objects>
+    <object>objects\obj_bubble</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
+    <room>rooms\rm_win</room>
     <room>rooms\rm_controls</room>
     <room>rooms\rm_arena</room>
-    <room>rooms\rm_win</room>
     <room>rooms\rm_end_menu</room>
     <room>rooms\rm_tutorial</room>
     <room>rooms\rm_tutorial_intro</room>
     <room>rooms\rm_tutorial_out</room>
     <room>rooms\rm_char_select</room>
+    <room>rooms\room9</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
