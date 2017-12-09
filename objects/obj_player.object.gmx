@@ -36,7 +36,7 @@ v_move = 0;
 //control flags + other
 friction = 3;
 attacking = false;
-grounded = false;
+grounded = true;
 pointing = false;
 shot = false;
 stunned = false;
