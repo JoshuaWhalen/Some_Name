@@ -78,7 +78,12 @@ if(owner.hit &lt;= 0){
                 with(global.p0){
                     instance_destroy();
                 }
-                global.round_num -= 1;
+                if(global.round_num == 1){
+                    global.round_num = 1
+                }
+                else{
+                    global.round_num -= 1;
+                }
                 room_goto(rm_arena);
             }
         }
@@ -89,7 +94,12 @@ if(owner.hit &lt;= 0){
                 with(global.p1){
                     instance_destroy();
                 }
-                global.round_num -= 1;
+                if(global.round_num == 1){
+                    global.round_num = 1
+                }
+                else{
+                    global.round_num -= 1;
+                }
                 room_goto(rm_arena);
             }
         }
