@@ -514,7 +514,7 @@ if((h_move != 0) || (v_move != 0) &amp;&amp; !attacking){
     }
 }
 //movement sprite and player collision
-if(hspeed != 0 &amp;&amp; !attacking){
+if(hspeed != 0){
     if (image_xscale == 1){ // if the sprite is facing right
         if (h_move &gt; 0){    // if the sprite is moving right
             if(!place_meeting(x + 50,y,obj_player)){ // checking for player collision
