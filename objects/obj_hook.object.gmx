@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///Die in XX frames
+image_yscale = 1.5;
+image_xscale = 1.5;
 alarm[0] = 15;
 </string>
           </argument>

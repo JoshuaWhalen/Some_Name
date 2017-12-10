@@ -40,6 +40,8 @@ grounded = false;
 pointing = false;
 shot = false;
 stunned = false;
+image_xscale = 1.5;
+image_yscale = 1.5;
 
 //additional objects
 healthbar = instance_create(x, y - (sprite_height/2) - 10, obj_healthbar);
@@ -600,8 +602,8 @@ if(!global.pause){ //If paused then stop running the script
 with(pointer){
     image_blend = other.image_blend;
     if(abs(owner.rsv) &gt;= 150 || abs(owner.rsh) &gt;= 150){
-        x = owner.x + (owner.rsh);   
-        y = owner.y + (owner.rsv);
+        x = owner.x + (owner.rsh * 1.5);   
+        y = owner.y + (owner.rsv * 1.5);
         if(!owner.pointing){
             other.arrow = instance_create(x, y, obj_arrow);
             other.arrow.owner = other;
@@ -617,6 +619,47 @@ with(pointer){
 }
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Facing
+
+//Pausing in the step event
+if(!global.pause){ //If paused then stop running the script
+
+
+//Facing
+if(!global.game){
+    if(id == global.p0)
+        opposing = global.p1;
+    else
+        opposing = global.p0;
+
+    if(x &lt; opposing.x){
+        image_xscale = 1.5;
+    }
+    else{
+        image_xscale = -1.5;
+}
+}
+}
 </string>
           </argument>
         </arguments>
@@ -716,52 +759,11 @@ else{
         hspeed = 0;
         sprite_index = spr_parry;
         image_index = 0;
-        alarm[9] = 9; // create parry obj
+        alarm[9] = 5; // create parry obj
         alarm[0] = 50 + attack_speed;
         alarm[6] = min(recovery, image_number);
         show_debug_message("Parry from " + string(player_num + 1));
     }
-}
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Facing
-
-//Pausing in the step event
-if(!global.pause){ //If paused then stop running the script
-
-
-//Facing
-if(!global.game){
-    if(id == global.p0)
-        opposing = global.p1;
-    else
-        opposing = global.p0;
-
-    if(x &lt; opposing.x){
-        image_xscale = 1;
-    }
-    else{
-        image_xscale = -1;
-}
 }
 }
 </string>
