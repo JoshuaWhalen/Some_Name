@@ -261,7 +261,7 @@ if(gamepad_button_check_pressed(1, gp_face1) || keyboard_check_pressed(vk_enter)
     
         if(obj_plr1_select.sprite_index = spr_idle &amp;&amp; obj_plr2_select.sprite_index = spr_idle){
            audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a" over "PLAY!" option
-           room_goto(rm_arena) 
+           room_goto(rm_controls) 
     
         }    
         

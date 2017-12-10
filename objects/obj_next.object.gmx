@@ -25,14 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(gamepad_button_check_pressed(0, gp_face1)){
+            <string>if(gamepad_button_check_pressed(0, gp_face1)|| gamepad_button_check_pressed(1, gp_face1)){
     audio_play_sound(snd_select, 0, 0); //Sound effect upon pressing "a"
-    if(room_get_name(room) == "rm_tutorial_intro") room_goto(rm_controls);
+    if(room_get_name(room) == "rm_tutorial_intro"){ 
+        room_goto(rm_controls);
+    }
+    if(room_get_name(room) == "rm_controls" &amp;&amp; global.stage == "tutorial"){
+        room_goto(rm_tutorial);
+    }
+    if(room_get_name(room) == "rm_controls" &amp;&amp; global.stage == "game"){
+        room_goto(rm_arena);
+    }
     if(room_get_name(room) == "rm_tutorial_out") {
         room_goto(rm_menu);
         audio_stop_sound(snd_music); //stop the background music
     }
-    else room_goto(rm_tutorial);
 }
 </string>
           </argument>

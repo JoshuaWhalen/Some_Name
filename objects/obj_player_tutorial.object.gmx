@@ -167,7 +167,7 @@ with(instance_create(x, y, obj_parry)){
             <kind>1</kind>
             <string>///Destroy stars
 with(stars){
-    if(player_num == 0){ //p1 parried
+    if(owner.player_num == 0){ //p1 parried
         if(obj_tutorial_done.p2_parry == false){
             instance_create( 1764, 480, obj_p2_check);
         }
@@ -337,7 +337,7 @@ with(tmp){ // hitbox creation
                 hit -= dmg; 
                 if(player_num == 0){ //p1 mid
                     if(obj_tutorial_done.p2_mid == false){
-                        instance_create( 1728, 325, obj_p2_check);
+                        instance_create( 1828, 325, obj_p2_check);
                     }
                     obj_tutorial_done.p2_mid = true;
                 }
