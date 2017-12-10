@@ -146,14 +146,14 @@ draw_set_color(c_white);
 //Draw menu text 
 var m;
 for(m = 0; m &lt; 3; m += 1){ 
-    draw_text(room_width/2 - 40, room_height/2 +(m*space), string(menu_array[m])); 
+    draw_text(1750, 680 +(m*space), string(menu_array[m])); 
     //draw_text(room_width/2 - 20, y +(m*space), string(menu_array[m])); 
     //draw_sprite(menu_array[m], 0, room_width/2 - 100, y + (mpos * space)); 
     
 }
 
 //Draw selection arrow
-draw_sprite(sprite_index, 0, room_width/2 - 90, room_height/2 + (mpos * space)); 
+draw_sprite(sprite_index, 0, 1750 - 50, 680 + (mpos * space)); 
 
 
 </string>
