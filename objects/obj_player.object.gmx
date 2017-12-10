@@ -484,6 +484,10 @@ if(!global.pause){ //If paused then stop running the script
 x = clamp(x, sprite_width/2, room_width - sprite_width);
 y = clamp(y, sprite_height/2, room_height - (sprite_height/2));
 
+//hard fix for moving off screen
+if(x&gt;=2784){
+ x=2750;
+}
 //switching movement control to other player
 control = -1;
 if(player_num == 0)

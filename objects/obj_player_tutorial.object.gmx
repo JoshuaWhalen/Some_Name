@@ -98,95 +98,6 @@ lKickMod = 0;       //Additional low kick damage
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Reset Stunned
-stunned = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="9">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Create Parry
-with(instance_create(x, y, obj_parry)){
-    image_xscale = other.image_xscale;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="8">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Destroy stars
-with(stars){
-    if(owner.player_num == 0){ //p1 parried
-        if(obj_tutorial_done.p2_parry == false){
-            instance_create( 1764, 480, obj_p2_check);
-        }
-        obj_tutorial_done.p2_parry = true;
-    }
-    else{
-        if(obj_tutorial_done.p1_parry == false){
-            instance_create( 1664, 480, obj_p1_check);
-        }
-        obj_tutorial_done.p1_parry = true;  
-    }
-    instance_destroy();
-}
-stars = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="7">
       <action>
         <libid>1</libid>
@@ -259,16 +170,7 @@ tmp.owner = id;
 with(id){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = 0;
-    if(place_meeting(x,y,obj_parry)){ // if punch hit parry
-        with(owner){
-        attacking = true; // player is stunned
-        stars = instance_create(x,y - 40,obj_stars); // create stars object signifying stunned
-        stars.owner = other.id;
-        alarm[0] = 300; // reset stunned
-        alarm[8] = 300; // destroy stars
-        }
-    }
-    else{
+   
         var player = instance_place(x,y,obj_player_tutorial);
         if(player != other.id){
             with(instance_place(x,y,obj_player_tutorial)){ // with another player
@@ -290,7 +192,7 @@ with(id){ // hitbox creation
                 audio_play_sound(snd_kick, 0, 0); //sound effect - kick
                 hspeed += 30 * other.image_xscale;  // give vertical movement to hit target
             }
-        }
+        
     }
 }
 </string>
@@ -321,16 +223,7 @@ tmp.owner = id;
 with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;  // change hitbox to face player
     var dmg = 0;             // pass damage through
-    if(place_meeting(x,y,obj_parry)){ // if punch hit parry
-        with(owner){
-        attacking = true; // player is stunned
-        stars = instance_create(x,y - 40,obj_stars); // create stars object signifying stunned
-        stars.owner = other.id;
-        alarm[0] = 300; // reset stunned
-        alarm[8] = 300; // destroy stars
-    }
-    }
-    else{
+    
         var player = instance_place(x,y,obj_player_tutorial);
         if(player != other.id){
             with(instance_place(x,y,obj_player_tutorial)){ // with another player
@@ -356,7 +249,7 @@ with(tmp){ // hitbox creation
                 vspeed -= 30;//give vertical movement to target
                 grounded = false;
             }
-        }    
+            
     }
 }
 </string>
@@ -387,16 +280,7 @@ tmp.owner = id;
 with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = 0;
-    if(place_meeting(x,y,obj_parry)){ // if punch hit parry
-    with(owner){
-        attacking = true; // player is stunned
-        stars = instance_create(x,y - 40,obj_stars); // create stars object signifying stunned
-        stars.owner = other.id;
-        alarm[0] = 300; // reset stunned
-        alarm[8] = 300; // destroy stars
-    }
-    }
-    else{
+    
         var player = instance_place(x,y,obj_player_tutorial);
         if(player != other.id){
             with(instance_place(x,y,obj_player_tutorial)){ // with another player
@@ -418,7 +302,7 @@ with(tmp){ // hitbox creation
                 alarm[1] = 2;
                 audio_play_sound(snd_punch, 0, 0); //sound effect - punch
             }
-        }
+        
     }
 }
 </string>
@@ -449,16 +333,7 @@ tmp.owner = id;
 with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = 0;
-    if(place_meeting(x,y,obj_parry)){ // if punch hit parry
-        with(owner){
-        attacking = true; // player is stunned
-        stars = instance_create(x,y - 400,obj_stars); // create stars object signifying stunned
-        stars.owner = id;
-        alarm[0] = 120; // reset stunned
-        alarm[8] = 120; // destroy stars
-        }
-    }
-    else{
+
         var player = instance_place(x,y,obj_player_tutorial);
         if(player != other.id){
             with(player){ // with another player
@@ -478,7 +353,7 @@ with(tmp){ // hitbox creation
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_punch, 0, 0); //sound effect - punch
-            }
+            
         }
     }
 }
@@ -677,9 +552,20 @@ else{
         attacking = true;
         sprite_index = spr_parry;
         image_index = 0;
-        alarm[9] = 9; // create parry obj
-        alarm[0] = 50 + attack_speed;
-        alarm[6] = min(recovery, image_number);
+        if(player_num == 0){ //p1 parry
+            if(obj_tutorial_done.p1_parry == false){
+                        instance_create( 1632, 475, obj_p1_check);
+            }
+            obj_tutorial_done.p1_parry = true;
+            }
+            else{ //player 2 parry
+                 if(obj_tutorial_done.p2_parry == false){
+                        instance_create( 1732, 475, obj_p2_check);
+                 }
+                    obj_tutorial_done.p2_parry = true;
+            }
+        alarm[0] = attack_speed;
+        alarm[6]=min(recovery, image_number);
         show_debug_message("Parry from " + string(player_num + 1));
     }
 }
@@ -757,6 +643,9 @@ if(global.pause){ //If paused then stop running the script
 //Supposed to prevent player from going outside of the screen
 x = clamp(x, sprite_width/2, room_width - (sprite_width/2));
 y = clamp(y, sprite_height/2, room_height - (sprite_height/2));
+if(x&gt;=2784){
+ x=2750;
+}
 
 //switching movement control to other player
 control = -1;
