@@ -329,13 +329,13 @@ with(tmp){ // hitbox creation
     image_xscale = other.image_xscale;
     var dmg = other.damage + other.hPunchMod;
     if(place_meeting(x,y,obj_parry)){ // if punch hit parry
-    with(owner){
-        attacking = true; // player is stunned
-        stars = instance_create(x,y - 40,obj_stars); // create stars object signifying stunned
-        stars.owner = other.id;
-        alarm[0] = 300; // reset stunned
-        alarm[8] = 300; // destroy stars
-    }
+        with(owner){
+            attacking = true; // player is stunned
+            stars = instance_create(x,y - 400,obj_stars); // create stars object signifying stunned
+            stars.owner = other.id;
+            alarm[0] = 300; // reset stunned
+            alarm[8] = 300; // destroy stars
+        }
     }
     else{
         var player = instance_place(x,y,obj_player);
@@ -379,11 +379,11 @@ with(tmp){ // hitbox creation
     var dmg = other.damage + other.mPunchMod;
     if(place_meeting(x,y,obj_parry)){ // if punch hit parry
         with(owner){
-        attacking = true; // player is stunned
-        stars = instance_create(x,y - 400,obj_stars); // create stars object signifying stunned
-        stars.owner = id;
-        alarm[0] = 120; // reset stunned
-        alarm[8] = 120; // destroy stars
+            attacking = true; // player is stunned
+            stars = instance_create(x,y - 400,obj_stars); // create stars object signifying stunned
+            stars.owner = id;
+            alarm[0] = 120; // reset stunned
+            alarm[8] = 120; // destroy stars
         }
     }
     else{
