@@ -820,6 +820,11 @@ if(hspeed != 0 &amp;&amp; !attacking){
 if(!grounded){
     vspeed += gravy;
 }
+with(instance_place(x,y, obj_floor)){
+        other.grounded = true;
+        other.y = y - 190;
+        other.vspeed = 0;
+}
 if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
     vspeed -= jump;
     grounded = false;
