@@ -147,16 +147,16 @@ draw_set_font(font_bn_machine);
 draw_set_color(c_white);
 
 //Draw menu text 
-
+//1750, 680
 for(var m = 0; m &lt; 4; m += 1){ 
-    draw_text(room_width/2 - 240, room_height/2 +(m*space), string(end_array[m])); 
+    draw_text(1780 - 240, 630 +(m*space), string(end_array[m])); 
     //draw_text(room_width/2 - 20, y +(m*space), string(menu_array[m])); 
     //draw_sprite(menu_array[m], 0, room_width/2 - 100, y + (mpos * space)); 
     
 }
 
 //Draw selection arrow
-draw_sprite(sprite_index, 0, room_width/2 - 290, room_height/2 + (mpos * space)); 
+draw_sprite(sprite_index, 0, 1780 - 290, 630 + (mpos * space)); 
 
 
 </string>
