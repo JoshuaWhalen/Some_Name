@@ -128,13 +128,12 @@ if(owner.hit &lt;= 0){
                 with(global.p0){
                     instance_destroy();
                 }
-                if(global.round_num == 1){
+                if(global.round_num == 0){
                     global.round_num = 1
                 }
                 else{
-                    global.round_num -= 1;
+                    //global.round_num -= 1;
                 }
-                global.round_num -= 1;
                 object_set_visible(obj_tie, true);
                 global.round_num -= 1;
                 room_goto(rm_arena);
@@ -147,13 +146,12 @@ if(owner.hit &lt;= 0){
                 with(global.p1){
                     instance_destroy();
                 }
-                if(global.round_num == 1){
+                if(global.round_num == 0){
                     global.round_num = 1
                 }
                 else{
-                    global.round_num -= 1;
+                    //global.round_num -= 1;
                 }
-                global.round_num -= 1;
                 object_set_visible(obj_tie, true);
                 room_goto(rm_arena);
                 

@@ -80,7 +80,7 @@ global.round_num = 1;
             <string>//Action for rounds
 
 //Round 2
-if(global.round_status == 0 &amp;&amp; global.round_num == 1){
+if(global.round_status == 0 &amp;&amp; global.round_num &lt;= 1){
     instance_destroy(obj_round1);
     instance_create(room_width/2, room_height/5.5, obj_round2);
     room_goto(rm_arena);
