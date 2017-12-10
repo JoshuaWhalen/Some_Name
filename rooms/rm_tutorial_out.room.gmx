@@ -12,7 +12,7 @@
   <showcolour>-1</showcolour>
   <code>text = "You have completed the tutorial. You may now return to the main menu. "
 // change 1 to 0.3 ish later
-textDraw(text , 0.3, 974, 288);</code>
+textDraw(text , 0.7, 974, 288);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
