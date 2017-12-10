@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Game Objects
 //controller deadzones
-deadzone = 0.20
+deadzone = 0.28
 rsv = 0;
 rsh = 0;
 h_move = 0;
@@ -494,7 +494,7 @@ else
 rsv = gamepad_axis_value(player_num, gp_axisrv) * 200;
 rsh = gamepad_axis_value(player_num, gp_axisrh) * 200;
 //collecting left analog stick input
-if(abs(gamepad_axis_value(control, gp_axislh)) &gt; deadzone) //manual deadzone
+if(abs(gamepad_axis_value(control, gp_axislh)) &gt; deadzone &amp;&amp; !attacking) //manual deadzone
     h_move = gamepad_axis_value(control, gp_axislh); //horizontal movement
 else
     h_move = 0;
@@ -521,7 +521,9 @@ if(hspeed != 0){
                 sprite_index = spr_move;
             }
             else{
+                sprite_index = spr_idle;
                 hspeed = 0;                     // setting hspeed to 0 of collision
+                image_speed = 1;
             }
         }
         else{               // if the sprite is moving left
@@ -534,7 +536,9 @@ if(hspeed != 0){
                 sprite_index = spr_move;
             }
             else{
+                sprite_index = spr_idle;
                 hspeed = 0;
+                image_speed = 1;
             }
         }
         else{               // if the sprite in moving right
@@ -660,6 +664,7 @@ else{
     if(gamepad_button_check_pressed(player_num, gp_shoulderrb) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         attacking = true;
+        hspeed = 0;
         sprite_index = spr_midpunch;
         image_index = 0;// Set to beginning of animation
         alarm[2] = 5;   // Mid punch object creation
@@ -672,6 +677,7 @@ else{
     if((gamepad_button_check_pressed(player_num, gp_shoulderr)  || (player_num == 1 &amp;&amp; keyboard_check_pressed(vk_up))) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         attacking = true;
+        hspeed = 0;
         sprite_index = spr_highpunch;
         image_index = 0;// Set to beginning of animation
         alarm[3] = 5;   // High punch object creation
@@ -683,6 +689,7 @@ else{
     if(gamepad_button_check_pressed(player_num, gp_shoulderlb) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         attacking = true;
+        hspeed = 0;
         sprite_index = spr_lowkick;
         image_index = 0;// Set to beginning of animation
         alarm[5] = 5;   // Low kick object creation
@@ -694,6 +701,7 @@ else{
     if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         attacking = true;
+        hspeed = 0;
         sprite_index = spr_midkick;
         image_index = 0;// Set to beginning of animation
         alarm[4] = 5;   // Mid kick object creation
@@ -705,6 +713,7 @@ else{
     if(gamepad_button_check_pressed(player_num, gp_face4) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0);
         attacking = true;
+        hspeed = 0;
         sprite_index = spr_parry;
         image_index = 0;
         alarm[9] = 9; // create parry obj
