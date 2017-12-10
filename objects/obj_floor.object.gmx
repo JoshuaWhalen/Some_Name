@@ -28,11 +28,11 @@
             <string>if(gamepad_button_check_pressed(0, gp_select) || gamepad_button_check_pressed(1, gp_select)){
     room_restart();
 }
-with(instance_place(x,y,obj_player)){
+/*with(instance_place(x,y,obj_player)){
     vspeed = 0;
     grounded = true;
     y = other.y - (other.sprite_height/2) - 48;
-}
+}*/
 
 with(instance_place(x,y,obj_player_tutorial)){
     vspeed = 0;

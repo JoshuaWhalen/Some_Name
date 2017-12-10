@@ -3,6 +3,7 @@ with(argument0){
     damage = argument1;
     max_speed = argument2;
     max_hit = argument3;
+    hit = max_hit;
     recovery = argument4;
     attack_speed = argument5;
     gravy = argument6;

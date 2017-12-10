@@ -36,7 +36,7 @@ v_move = 0;
 //control flags + other
 friction = 3;
 attacking = false;
-grounded = true;
+grounded = false;
 pointing = false;
 shot = false;
 stunned = false;
@@ -238,12 +238,12 @@ with(tmp){ // hitbox creation
     else{
         var player = instance_place(x,y,obj_player);
         if(player != other.id){
-            with(instance_place(x,y,obj_player)){ // with another player
+            with(player){ // with another player
                 hit -= dmg;
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_kick, 0, 0); //sound effect - kick
-                hspeed += 30 * other.image_xscale;  // give vertical movement to hit target
+                hspeed += 15 * (other.owner.damage / 3) * other.image_xscale;  // give vertical movement to hit target
             }
         }
     }
@@ -288,13 +288,13 @@ with(tmp){ // hitbox creation
     else{
         var player = instance_place(x,y,obj_player);
         if(player != other.id){
-            with(instance_place(x,y,obj_player)){ // with another player
+            with(player){ // with another player
                 hit -= dmg;                     // damage from attacking fighter hitting recieving fighter
                 image_blend = c_white;  // hit flash
                 alarm[1] = 2;           // reset player colour
                 audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
-                hspeed += 30 * other.image_xscale; //add movement to kicked target
-                vspeed -= 30;//give vertical movement to target
+                hspeed = 15 * (other.owner.damage / 3) * other.image_xscale; //add movement to kicked target
+                vspeed = -25 * (other.owner.damage / 3);//give vertical movement to target
                 grounded = false;
             }
         }    
@@ -340,7 +340,7 @@ with(tmp){ // hitbox creation
     else{
         var player = instance_place(x,y,obj_player);
         if(player != other.id){
-            with(instance_place(x,y,obj_player)){ // with another player
+            with(player){ // with another player
                 hit -= dmg * 2;
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
@@ -391,6 +391,7 @@ with(tmp){ // hitbox creation
         if(player != other.id){
             with(player){ // with another player
                 hit -= dmg;
+                hspeed = 5 * (other.owner.damage / 3) * other.image_xscale;
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_punch, 0, 0); //sound effect - punch
@@ -474,9 +475,9 @@ attacking = false;
             <string>///Movement
 
 //Pausing in the step event
-if(global.pause){ //If paused then stop running the script
-    exit;
-}
+if(!global.pause){ //If paused then stop running the script
+
+
 
 //Movement 
 //Supposed to prevent player from going outside of the screen
@@ -505,8 +506,11 @@ else
 //setting speed
 if((h_move != 0) || (v_move != 0) &amp;&amp; !attacking){
     if(abs(hspeed) &lt; (max_speed)){
-        hspeed += max_speed * h_move;
+        hspeed += 8 * h_move;
         //vspeed += max_speed * v_move;
+    }
+    else if(hspeed &gt; max_speed){
+        hspeed = max_speed;
     }
 }
 //movement sprite and player collision
@@ -545,10 +549,17 @@ if(hspeed != 0 &amp;&amp; !attacking){
 if(!grounded){
     vspeed += gravy;
 }
+with(instance_place(x,y, obj_floor)){
+        other.grounded = true;
+        other.y = y - 190;
+        other.vspeed = 0;
+}
 if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
     vspeed -= jump;
     grounded = false;
 }
+}
+
 
 
 
@@ -575,13 +586,13 @@ if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
             <string>///Grapple Arrow
 
 //For the pausing in the step event
-if(global.pause){ //If paused then stop running the script
-    exit;
-}
+if(!global.pause){ //If paused then stop running the script
+
 
 
 //Grapple Arrow 
 with(pointer){
+    image_blend = other.image_blend;
     if(abs(owner.rsv) &gt;= 150 || abs(owner.rsh) &gt;= 150){
         x = owner.x + (owner.rsh);   
         y = owner.y + (owner.rsv);
@@ -596,6 +607,7 @@ with(pointer){
         x = owner.x;
         y = owner.y;
     }
+}
 }
 
 
@@ -622,9 +634,8 @@ with(pointer){
             <string>///Attacking
 
 //Pausing in the step event
-if(global.pause){ //If paused then stop running the script
-    exit; 
-}
+if(!global.pause){ //If paused then stop running the script
+
 
 //Grapple
 if(pointing){ // arrow exists
@@ -700,8 +711,7 @@ else{
         show_debug_message("Parry from " + string(player_num + 1));
     }
 }
-
-
+}
 </string>
           </argument>
         </arguments>
@@ -725,9 +735,8 @@ else{
             <string>///Facing
 
 //Pausing in the step event
-if(global.pause){ //If paused then stop running the script
-    exit; 
-}
+if(!global.pause){ //If paused then stop running the script
+
 
 //Facing
 if(!global.game){
@@ -741,6 +750,7 @@ if(!global.game){
     }
     else{
         image_xscale = -1;
+}
 }
 }
 </string>
