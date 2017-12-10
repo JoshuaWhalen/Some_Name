@@ -541,8 +541,10 @@ if(hspeed != 0){
             sprite_index = spr_reverse;
         }
     }
-    image_speed = abs(hspeed) / max_speed; // movement animation speed matches player movement speed to create smooth walking to running cycle
-    alarm[6] = 5;
+    if(hspeed != 0){
+        image_speed = abs(hspeed) / max_speed; // movement animation speed matches player movement speed to create smooth walking to running cycle
+        alarm[6] = 5;
+    }
 }
 
 //jumping
