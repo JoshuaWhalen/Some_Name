@@ -70,6 +70,7 @@
     </sprites>
     <sprites name="Rounds">
       <sprite>sprites\spr_round1</sprite>
+      <sprite>sprites\spr_rematch</sprite>
       <sprite>sprites\spr_round2</sprite>
       <sprite>sprites\spr_round3</sprite>
       <sprite>sprites\spr_medal_slot</sprite>
