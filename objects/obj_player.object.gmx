@@ -345,6 +345,8 @@ with(tmp){ // hitbox creation
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_punch, 0, 0); //sound effect - punch
+                vspeed = -10 * (other.owner.damage / 3);
+                grounded = false;
             }
         }
     }
@@ -391,7 +393,7 @@ with(tmp){ // hitbox creation
         if(player != other.id){
             with(player){ // with another player
                 hit -= dmg;
-                hspeed = 5 * (other.owner.damage / 3) * other.image_xscale;
+                hspeed = 10 * (other.owner.damage / 3) * other.image_xscale;
                 image_blend = c_white; //hit flash
                 alarm[1] = 2;
                 audio_play_sound(snd_punch, 0, 0); //sound effect - punch
