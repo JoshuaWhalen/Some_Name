@@ -66,15 +66,32 @@ else{
     global.round_status = 0; //0 if round is over 
     instance_destroy();
 }
+if (instance_exists(owner)){
 if(owner.hit &lt;= 0){
     global.game = true;
     with(owner){ 
         
         if(player_num == 1){ //if player 2 destroyed
             global.p1_wins += 1; //player 1 wins, add to p1 win count
+            if(global.p0.hit &lt;= 0){
+                global.p1_wins -= 1;
+                with(global.p0){
+                    instance_destroy();
+                }
+                global.round_num -= 1;
+                room_goto(rm_arena);
+            }
         }
         else if(player_num == 0){ //if player 1 destroyed
             global.p2_wins += 1; //player 2 wins, add to p2 win count
+            if(global.p1.hit &lt;= 0){
+                global.p0_wins -= 1;
+                with(global.p1){
+                    instance_destroy();
+                }
+                global.round_num -= 1;
+                room_goto(rm_arena);
+            }
         }
         
         global.round_status = 0;            
@@ -82,6 +99,7 @@ if(owner.hit &lt;= 0){
     }
     global.round_status = 0;    
     instance_destroy();
+}
 }
 </string>
           </argument>
