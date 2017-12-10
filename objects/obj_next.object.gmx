@@ -36,6 +36,9 @@
     if(room_get_name(room) == "rm_controls" &amp;&amp; global.stage == "game"){
         room_goto(rm_arena);
     }
+    if(room_get_name(room) == "rm_tutorial"){
+        room_goto(rm_tutorial_out);
+    }
     if(room_get_name(room) == "rm_tutorial_out") {
         room_goto(rm_menu);
         audio_stop_sound(snd_music); //stop the background music
@@ -66,7 +69,12 @@
             <string>draw_self();
 
 draw_set_font(font_options);
-draw_set_color(c_white);
+if(room_get_name(room) == "rm_tutorial"){
+    draw_set_color(c_black);
+}
+else{
+    draw_set_color(c_white);
+}
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
