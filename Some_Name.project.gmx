@@ -198,9 +198,9 @@
     <room>rooms\rm_controls</room>
     <room>rooms\rm_arena</room>
     <room>rooms\rm_tutorial</room>
+    <room>rooms\rm_char_select</room>
     <room>rooms\rm_tutorial_intro</room>
     <room>rooms\rm_tutorial_out</room>
-    <room>rooms\rm_char_select</room>
     <room>rooms\room9</room>
   </rooms>
   <help>

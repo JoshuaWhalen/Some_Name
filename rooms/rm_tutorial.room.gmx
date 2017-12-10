@@ -54,7 +54,7 @@
     <instance objName="obj_floor" x="1408" y="992" name="inst_E00CB55E" locked="0" code="image_blend = c_black;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_instrc" x="960" y="0" name="inst_DB8CAB1F" locked="0" code="" scaleX="1.32000005245209" scaleY="1.40799999237061" colour="4294967295" rotation="0"/>
     <instance objName="obj_player_tutorial" x="864" y="800" name="inst_35728139" locked="0" code="player_num = 0;&#xA;global.p0 = id;&#xA;&#xA;image_blend =  c_red;&#xA;&#xA;&#xA;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player_tutorial" x="1024" y="704" name="inst_5DAFAB11" locked="0" code="player_num = 1;&#xA;image_blend = c_blue;&#xA;global.p1 = id;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player_tutorial" x="2048" y="800" name="inst_5DAFAB11" locked="0" code="player_num = 1;&#xA;image_blend = c_blue;&#xA;global.p1 = id;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tutorial_done" x="128" y="32" name="inst_CF340FBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

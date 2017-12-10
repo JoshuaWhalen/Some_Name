@@ -2,7 +2,7 @@
 <room>
   <caption></caption>
   <width>2800</width>
-  <height>1000</height>
+  <height>1600</height>
   <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
@@ -10,9 +10,9 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>text = "In this game you control your opponent's movement. You must move them towards you before you can attack. To help with this both fighters have a grapple hook to speed things along. Be warned when aiming the hook you can not attack. Let's do a test round now shall we? "
+  <code>text = "In this game you control your opponent's movement. You must move them towards you before you can attack. To help with this both fighters have a grapple hook to speed things along. Be warned when aiming the hook you can not attack. Let's do a test round now. Shall we? "
 // change 1 to 0.3 ish later
-textDraw(text , 0.7, 974, 288);
+textDraw(text , 0.7, room_width/2 - (room_width/40) * 7, room_height/2 - room_height/5);
 global.stage = "tutorial";</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>

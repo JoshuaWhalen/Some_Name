@@ -53,7 +53,7 @@ done = false;
           <argument>
             <kind>1</kind>
             <string>if(done == true){
-    instance_create(2464,832, obj_next);
+    instance_create(2464,1432, obj_next);
 }
 
 </string>
