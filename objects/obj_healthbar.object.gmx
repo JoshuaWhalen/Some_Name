@@ -57,7 +57,7 @@ if (instance_exists(owner)){
     move_towards_point(owner.x, y, speed);
 
     x = owner.x; //follow the player
-    y = owner.y - owner.sprite_height/2;
+    y = owner.y - owner.sprite_height/2 - 20;
     
     //set new healthbar health;
     image_index = (owner.hit / owner.max_hit) * 100;
