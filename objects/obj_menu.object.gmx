@@ -80,6 +80,7 @@ if(mpos &gt; 2){
 //If scrolling, play the scrolling sound effect
 if(move != 0){
     audio_play_sound(snd_scroll, 0, 0); 
+
 }
 
 //Menu selection. Cases for when the "a" button(or enter key) is pressed. 
