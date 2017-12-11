@@ -115,17 +115,17 @@ if(alpha &lt; 1)
 else 
     alpha = 1;
 
-draw_set_font(font_options);
+draw_set_font(font_bn_machine);
 
 draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_text_ext(
-    x + padding,
+    x - 500,
     y + padding,
     print,
-    fontSize+(fontSize/2),
-    maxLength
+    fontSize+(fontSize*2),
+    maxLength + 1000
     
 );
 
