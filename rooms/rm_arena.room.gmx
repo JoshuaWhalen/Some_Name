@@ -11,7 +11,11 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>global.game = false;
-audio_stop_sound(snd_music);</code>
+audio_stop_sound(snd_music);
+if(global.winrrr){
+    global.facerrr = 0;
+    global.winrrr = false;
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

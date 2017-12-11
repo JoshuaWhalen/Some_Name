@@ -73,7 +73,7 @@ with(obj_player){
 }
 
 with(obj_player){
-    show_debug_message("AAAHHHH " + string(image_speed));
+    //show_debug_message("AAAHHHH " + string(image_speed));
 }
 
 //If "start" button(or space key) is pressed while the game is not paused and you're in the arena, then pause

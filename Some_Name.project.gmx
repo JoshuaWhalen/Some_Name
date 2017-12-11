@@ -91,6 +91,10 @@
       <sprite>sprites\spr_control</sprite>
     </sprites>
     <sprite>sprites\spr_bubble</sprite>
+    <sprites name="Secret">
+      <sprite>sprites\spr_AaronSide</sprite>
+      <sprite>sprites\spr_AaronFront</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\BG_image</background>
@@ -193,6 +197,10 @@
       <object>objects\obj_tutorial_done</object>
     </objects>
     <object>objects\obj_bubble</object>
+    <objects name="Secret">
+      <object>objects\obj_AaronSide</object>
+      <object>objects\obj_AaronFront</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>

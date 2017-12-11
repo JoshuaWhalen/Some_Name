@@ -7,7 +7,165 @@
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>count = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>count = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Konami Code
+switch(count){
+    //up
+    case 0:
+    if(gamepad_button_check_pressed(0, gp_padu) || gamepad_button_check_pressed(1, gp_padu) &amp;&amp; !global.face){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    break;
+    //up
+    case 1:
+    if(gamepad_button_check_pressed(0, gp_padu) || gamepad_button_check_pressed(1, gp_padu)){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    //down
+    break;
+    case 2:
+    if(gamepad_button_check_pressed(0, gp_padd) || gamepad_button_check_pressed(1, gp_padd)){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    //down
+    break;
+    case 3:
+    if(gamepad_button_check_pressed(0, gp_padd) || gamepad_button_check_pressed(1, gp_padd)){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    break;
+    //left
+    case 4:
+    if(gamepad_button_check_pressed(0, gp_padl) || gamepad_button_check_pressed(1, gp_padl)){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    //right
+    break;
+    case 5:
+    if(gamepad_button_check_pressed(0, gp_padr) || gamepad_button_check_pressed(1, gp_padr)){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    break;
+    //left
+    case 6:
+    if(gamepad_button_check_pressed(0, gp_padl) || gamepad_button_check_pressed(1, gp_padl)){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    //right
+    break;
+    case 7:
+    if(gamepad_button_check_pressed(0, gp_padr) || gamepad_button_check_pressed(1, gp_padr)){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    break;
+    //A
+    case 8:
+    if(gamepad_button_check_pressed(0, gp_face1) || gamepad_button_check_pressed(1, gp_face1)){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    //B
+    break;
+    case 9:
+    if(gamepad_button_check_pressed(0, gp_face2) || gamepad_button_check_pressed(1, gp_face2)){
+        count++;
+        alarm[0] = 120;
+        show_debug_message(string(count));
+    }
+    break;
+    case 10:
+    if(gamepad_button_check_pressed(0, gp_start) || gamepad_button_check_pressed(1, gp_start)){
+        global.facerrr = 1;
+        show_debug_message(string(global.facerrr));
+    }
+    break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
