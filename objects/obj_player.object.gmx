@@ -289,19 +289,21 @@ with(tmp){ // hitbox creation
     }
     else{
         var player = instance_place(x,y,obj_player);
+        atester = player;
         if(player != other.id){
             with(player){ // with another player
                 hit -= dmg;                     // damage from attacking fighter hitting recieving fighter
                 image_blend = c_white;  // hit flash
                 alarm[1] = 2;           // reset player colour
-                audio_play_sound(snd_kick, 0, 0); //sound effect - kick 
+                audio_play_sound(snd_kick, 0, 0); //sound effect - kick
                 hspeed = 15 * (other.owner.damage / 3) * other.image_xscale; //add movement to kicked target
-                vspeed = -25 * (other.owner.damage / 3);//give vertical movement to target
+                vspeed = -25 * (other.owner.damage / 3) * 5;//give vertical movement to target
                 grounded = false;
             }
         }    
     }
 }
+
 </string>
           </argument>
         </arguments>
@@ -476,127 +478,6 @@ attacking = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Movement
-
-//Pausing in the step event
-if(!global.pause){ //If paused then stop running the script
-
-
-
-//Movement 
-//Supposed to prevent player from going outside of the screen
-x = clamp(x, sprite_width/2, room_width - sprite_width);
-y = clamp(y, sprite_height/2, room_height - (sprite_height/2));
-
-//hard fix for moving off screen
-if(x&gt;=2784){
- x=2750;
-}
-//switching movement control to other player
-control = -1;
-if(player_num == 0)
-    control = 1;
-else
-    control = 0;
-//collenting right analog stick input
-rsv = gamepad_axis_value(player_num, gp_axisrv) * 200;
-rsh = gamepad_axis_value(player_num, gp_axisrh) * 200;
-//collecting left analog stick input
-if(abs(gamepad_axis_value(control, gp_axislh)) &gt; deadzone &amp;&amp; !attacking) //manual deadzone
-    h_move = gamepad_axis_value(control, gp_axislh); //horizontal movement
-else
-    h_move = 0;
-if(abs(gamepad_axis_value(control, gp_axislv)) &gt; deadzone) //manual deadzone
-    v_move = gamepad_axis_value(control, gp_axislv); //vertical movement
-else
-    v_move = 0;
-
-//setting speed
-if((h_move != 0) || (v_move != 0) &amp;&amp; !attacking){
-    if(abs(hspeed) &lt; (max_speed)){
-        hspeed += 8 * h_move;
-        //vspeed += max_speed * v_move;
-    }
-    else if(hspeed &gt; max_speed){
-        hspeed = max_speed;
-    }
-}
-//movement sprite and player collision
-if(hspeed != 0){
-    if (image_xscale == 1){ // if the sprite is facing right
-        if (h_move &gt; 0){    // if the sprite is moving right
-            if(!place_meeting(x + 50,y,obj_player)){ // checking for player collision
-                sprite_index = spr_move;
-            }
-            else{
-                sprite_index = spr_idle;
-                hspeed = 0;                     // setting hspeed to 0 of collision
-                image_speed = 1;
-            }
-        }
-        else{               // if the sprite is moving left
-            sprite_index = spr_reverse;
-        }
-    }
-    else{                   // if the sprite is facing left
-        if(h_move &lt; 0){     // if the sprite is moving left
-            if(!place_meeting(x - 50,y,obj_player)){ // checking for player collision
-                sprite_index = spr_move;
-            }
-            else{
-                sprite_index = spr_idle;
-                hspeed = 0;
-                image_speed = 1;
-            }
-        }
-        else{               // if the sprite in moving right
-            sprite_index = spr_reverse;
-        }
-    }
-    if(hspeed != 0){
-        image_speed = abs(hspeed) / max_speed; // movement animation speed matches player movement speed to create smooth walking to running cycle
-        alarm[6] = 5;
-    }
-}
-
-//jumping
-if(!grounded){
-    vspeed += gravy;
-}
-with(instance_place(x,y, obj_floor)){
-        other.grounded = true;
-        other.y = y - 190;
-        other.vspeed = 0;
-}
-if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
-    vspeed -= jump;
-    grounded = false;
-}
-}
-
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///Grapple Arrow
 
 //For the pausing in the step event
@@ -710,10 +591,10 @@ if(pointing){ // arrow exists
 //Attacks
 else{
     // Mid Punch
-    if(gamepad_button_check_pressed(player_num, gp_shoulderrb) &amp;&amp; !attacking){
+    if(gamepad_button_check_pressed(player_num, gp_shoulderrb)){
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         attacking = true;
-        hspeed = 0;
+        hspeed = hspeed/2;
         sprite_index = spr_midpunch;
         image_index = 0;// Set to beginning of animation
         alarm[2] = 5;   // Mid punch object creation
@@ -726,7 +607,7 @@ else{
     if((gamepad_button_check_pressed(player_num, gp_shoulderr)  || (player_num == 1 &amp;&amp; keyboard_check_pressed(vk_up))) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         attacking = true;
-        hspeed = 0;
+        hspeed = hspeed/2;
         sprite_index = spr_highpunch;
         image_index = 0;// Set to beginning of animation
         alarm[3] = 5;   // High punch object creation
@@ -738,7 +619,7 @@ else{
     if(gamepad_button_check_pressed(player_num, gp_shoulderlb) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         attacking = true;
-        hspeed = 0;
+        hspeed = hspeed/2;
         sprite_index = spr_lowkick;
         image_index = 0;// Set to beginning of animation
         alarm[5] = 5;   // Low kick object creation
@@ -750,7 +631,7 @@ else{
     if(gamepad_button_check_pressed(player_num, gp_shoulderl) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0); //sound effect - swing
         attacking = true;
-        hspeed = 0;
+        hspeed = hspeed/2;
         sprite_index = spr_midkick;
         image_index = 0;// Set to beginning of animation
         alarm[4] = 5;   // Mid kick object creation
@@ -762,7 +643,7 @@ else{
     if(gamepad_button_check_pressed(player_num, gp_face4) &amp;&amp; !attacking){
         audio_play_sound(snd_swing, 1, 0);
         attacking = true;
-        hspeed = 0;
+        hspeed = hspeed/2;
         sprite_index = spr_parry;
         image_index = 0;
         alarm[9] = 5; // create parry obj
@@ -772,6 +653,137 @@ else{
     }
 }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Movement
+
+//Pausing in the step event
+if(!global.pause){ //If paused then stop running the script
+
+
+
+//Movement 
+//Supposed to prevent player from going outside of the screen
+x = clamp(x, sprite_width/2, room_width - sprite_width);
+y = clamp(y, sprite_height/2, room_height - (sprite_height/2));
+
+//hard fix for moving off screen
+if(x&gt;=2784){
+ x=2750;
+}
+//switching movement control to other player
+control = -1;
+if(player_num == 0)
+    control = 1;
+else
+    control = 0;
+//collenting right analog stick input
+rsv = gamepad_axis_value(player_num, gp_axisrv) * 200;
+rsh = gamepad_axis_value(player_num, gp_axisrh) * 200;
+//collecting left analog stick input
+if(abs(gamepad_axis_value(control, gp_axislh)) &gt; deadzone) //manual deadzone
+    h_move = gamepad_axis_value(control, gp_axislh); //horizontal movement
+else
+    h_move = 0;
+if(abs(gamepad_axis_value(control, gp_axislv)) &gt; deadzone) //manual deadzone
+    v_move = gamepad_axis_value(control, gp_axislv); //vertical movement
+
+//setting speed
+if((h_move != 0) || (v_move != 0)){
+    if(abs(hspeed) &lt; (max_speed)){
+        hspeed += 8 * h_move;
+        //vspeed += max_speed * v_move;
+    }
+    else if(hspeed &gt; max_speed){
+        hspeed = max_speed;
+    }
+}
+//movement sprite and player collision
+if(hspeed != 0){
+    if (image_xscale == 1){ // if the sprite is facing right
+        if (h_move &gt; 0){    // if the sprite is moving right
+            if(!place_meeting(x + 50,y,obj_player)){ // checking for player collision
+                if(!attacking){
+                    sprite_index = spr_move;
+                }
+            }
+            else{
+                if(!attacking){
+                    sprite_index = spr_idle;
+                }
+                hspeed = 0;                     // setting hspeed to 0 of collision
+                image_speed = 1;
+            }
+        }
+        else{               // if the sprite is moving left
+            if(!attacking){
+                sprite_index = spr_reverse;
+            }
+        }
+    }
+    else{                   // if the sprite is facing left
+        if(h_move &lt; 0){     // if the sprite is moving left
+            if(!place_meeting(x - 50,y,obj_player)){ // checking for player collision
+                if(!attacking){
+                    sprite_index = spr_move;
+                }
+            }
+            else{
+                if(!attacking){
+                    sprite_index = spr_idle;
+                }
+                hspeed = 0;
+                image_speed = 1;
+            }
+        }
+        else{               // if the sprite in moving right
+            if(!attacking){
+                sprite_index = spr_reverse;
+            }
+        }
+    }
+    if(hspeed != 0){
+        image_speed = abs(hspeed) / max_speed; // movement animation speed matches player movement speed to create smooth walking to running cycle
+        alarm[6] = 5;
+    }
+}
+
+//jumping
+if(!grounded){
+    vspeed += gravy;
+}
+with(instance_place(x,y, obj_floor)){
+        other.grounded = true;
+        other.y = y - 230;
+        other.vspeed = 0;
+}
+if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
+    vspeed -= jump;
+    grounded = false;
+}
+}
+
+
+
+
 </string>
           </argument>
         </arguments>

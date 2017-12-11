@@ -122,37 +122,34 @@ if(owner.hit &lt;= 0){
     with(owner){ 
         
         if(player_num == 1){ //if player 2 destroyed
-            global.p1_wins += 1; //player 1 wins, add to p1 win count
+            global.p1_wins = true; //player 1 wins, add to p1 win count
+            object_set_visible(obj_tie, false);
+            global.p1wins++;
             if(global.p0.hit &lt;= 0){
-                global.p1_wins -= 1;
+                global.p1wins--;
+                global.p1_wins = false;
+                global.p0_wins = false;
                 with(global.p0){
                     instance_destroy();
                 }
-                if(global.round_num == 0){
-                    global.round_num = 1
-                }
-                else{
-                    //global.round_num -= 1;
-                }
                 object_set_visible(obj_tie, true);
-                global.round_num -= 1;
+                //global.round_num -= 1;
                 room_goto(rm_arena);
             }
         }
         else if(player_num == 0){ //if player 1 destroyed
-            global.p2_wins += 1; //player 2 wins, add to p2 win count
+            global.p2_wins = true; //player 2 wins, add to p2 win count
+            object_set_visible(obj_tie, false);
+            global.p2wins++;
             if(global.p1.hit &lt;= 0){
-                global.p0_wins -= 1;
+                global.p2wins--;
+                global.p0_wins = false;
+                global.p1_wins = false;
                 with(global.p1){
                     instance_destroy();
                 }
-                if(global.round_num == 0){
-                    global.round_num = 1
-                }
-                else{
-                    //global.round_num -= 1;
-                }
                 object_set_visible(obj_tie, true);
+                //global.round_num -= 1;
                 room_goto(rm_arena);
                 
             }

@@ -110,6 +110,7 @@
     <script>scripts\scr_menu.gml</script>
     <script>scripts\scr_movement.gml</script>
     <script>scripts\scr_pause.gml</script>
+    <script>scripts\script7.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_options</font>
@@ -195,7 +196,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
-    <room>rooms\rm_end_menu</room>
     <room>rooms\rm_win</room>
     <room>rooms\rm_controls</room>
     <room>rooms\rm_arena</room>

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.p1_wins &gt; global.p2_wins){
+            <string>if(global.p1wins &gt; global.p2wins){
     image_blend = global.clr1;
 }
 else{
