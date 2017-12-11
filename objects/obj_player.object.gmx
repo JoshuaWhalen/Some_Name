@@ -775,6 +775,10 @@ with(instance_place(x,y, obj_floor)){
         other.y = y - 230;
         other.vspeed = 0;
 }
+with(instance_place(x, y, obj_midkick)){
+    other.vspeed = -25 * (owner.damage/3)
+    other.grounded = false;
+}
 if(gamepad_axis_value(control, gp_axislv) &lt; -0.6 &amp;&amp; grounded){
     vspeed -= jump;
     grounded = false;
