@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>audio_play_sound(snd_music, 0, true);
+  <code>if(!audio_is_playing(snd_music)){
+    audio_play_sound(snd_music, 0, true);
+}
 global.stage= "dontCare";
 global.facerrr = false;
 global.winrrr = false;</code>

@@ -11,7 +11,10 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>show_debug_message(string(global.facerrr));
-global.winrrr = true;</code>
+global.winrrr = true;
+if(!audio_is_playing(snd_music)){
+    audio_play_sound(snd_music, 0, true);
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

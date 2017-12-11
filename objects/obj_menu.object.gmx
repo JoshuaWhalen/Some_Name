@@ -88,6 +88,7 @@ if(gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter)
     switch(mpos){ 
         case 0:{ //player selected "start"
             room_goto(rm_char_select);
+            audio_stop_sound(snd_music);
             break;
         }
         case 1:{ //player selected "tutorial"
